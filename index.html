@@ -406,12 +406,12 @@ let playing = false;
 document.addEventListener('click', function startOnFirstClick() {
   if (!playing) {
     audio.volume = 0.4;
-    audio.play();
+    audio.play().catch(()=>{});
     btn.textContent = '🔊';
     playing = true;
+    document.removeEventListener('click', startOnFirstClick);
   }
-  document.removeEventListener('click', startOnFirstClick);
-}, { once: false });
+});
 
 function toggleSound() {
   if (playing) {
@@ -419,7 +419,7 @@ function toggleSound() {
     btn.textContent = '🔇';
     playing = false;
   } else {
-    audio.play();
+    audio.play().catch(()=>{});
     btn.textContent = '🔊';
     playing = true;
   }
