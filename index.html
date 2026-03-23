@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>i[ f-AH-si ]einaihop.gr — Hoper Summer 2026</title>
+<title>ifasieinai.gr — Hoper Summer 2026</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
 body { background: #F7F5F0; color: #1A1A2E; }
 .site { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
-
 .nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; background: #111; border-radius: 14px; margin-bottom: 0; position: relative; z-index: 10; }
 .nav-logo { color: #fff; font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
 .nav-logo span { color: #FFE020; }
@@ -16,8 +15,6 @@ body { background: #F7F5F0; color: #1A1A2E; }
 .lang-btn { padding: 4px 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.25); background: transparent; color: #fff; font-size: 12px; cursor: pointer; }
 .lang-btn.active { background: #FFE020; color: #111; border-color: #FFE020; font-weight: 700; }
 .hoper-by { background: #FFE020; border-radius: 20px; padding: 4px 12px; font-size: 11px; font-weight: 700; color: #111; }
-
-/* CAROUSEL */
 .carousel { position: relative; width: 100%; height: 520px; border-radius: 0 0 20px 20px; overflow: hidden; margin-bottom: 2rem; }
 .carousel-track { display: flex; width: 500%; height: 100%; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
 .carousel-slide { width: 20%; height: 100%; position: relative; flex-shrink: 0; }
@@ -27,34 +24,30 @@ body { background: #F7F5F0; color: #1A1A2E; }
 .carousel-expression { font-size: 13px; color: rgba(255,255,255,0.65); font-style: italic; margin-bottom: 6px; letter-spacing: 0.5px; }
 .carousel-island { font-size: 42px; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 6px; text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
 .carousel-copy { font-size: 15px; color: rgba(255,255,255,0.8); margin-bottom: 1.2rem; max-width: 360px; line-height: 1.5; }
-.carousel-cta { display: inline-flex; align-items: center; gap: 8px; background: #FFE020; color: #111; font-size: 13px; font-weight: 700; padding: 10px 20px; border-radius: 30px; cursor: pointer; border: none; text-decoration: none; }
+.carousel-cta { display: inline-flex; align-items: center; gap: 8px; background: #FFE020; color: #111; font-size: 13px; font-weight: 700; padding: 10px 20px; border-radius: 30px; cursor: pointer; border: none; }
 .carousel-dots { position: absolute; bottom: 1.5rem; right: 2rem; display: flex; gap: 6px; }
 .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: all 0.2s; border: none; padding: 0; }
 .dot.active { background: #FFE020; width: 22px; border-radius: 4px; }
-.carousel-prev, .carousel-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; width: 38px; height: 38px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; backdrop-filter: blur(4px); }
+.carousel-prev, .carousel-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; width: 38px; height: 38px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
 .carousel-prev { left: 1rem; }
 .carousel-next { right: 1rem; }
 .carousel-prev:hover, .carousel-next:hover { background: rgba(255,255,255,0.3); }
-.carousel-tag { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; letter-spacing: 1px; backdrop-filter: blur(4px); }
-
-/* REST OF SITE */
+.carousel-tag { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; letter-spacing: 1px; }
 .section-wrap { padding: 0 0.5rem; }
 .section-label { font-size: 11px; font-weight: 600; color: #94A3B8; letter-spacing: 2px; text-align: center; margin-bottom: 1.2rem; }
 .steps { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin-bottom: 2rem; }
 .step { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #64748B; }
 .step-num { width: 24px; height: 24px; border-radius: 50%; background: #111; color: #FFE020; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .step-arrow { color: #CBD5E1; font-size: 12px; }
-
 .islands-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 2.5rem; }
 .island-pill { display: flex; align-items: center; gap: 8px; padding: 5px 14px 5px 5px; background: #fff; border: 1.5px solid #E2E8F0; border-radius: 50px; cursor: pointer; transition: all 0.15s; }
 .island-pill:hover { border-color: #94A3B8; }
 .island-pill.selected { border-color: #FFE020; border-width: 2px; background: #FFFDE7; }
-.island-thumb { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; background: #E2E8F0; overflow: hidden; flex-shrink: 0; }
+.island-thumb { width: 32px; height: 32px; border-radius: 50%; background: #E2E8F0; overflow: hidden; flex-shrink: 0; }
 .island-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 .island-pname { font-size: 13px; font-weight: 600; color: #1A1A2E; }
 .island-check { width: 16px; height: 16px; border-radius: 50%; background: #FFE020; display: none; align-items: center; justify-content: center; font-size: 9px; color: #111; font-weight: 700; flex-shrink: 0; }
 .island-pill.selected .island-check { display: flex; }
-
 .form-card { background: #fff; border: 0.5px solid #E2E8F0; border-radius: 16px; padding: 1.75rem; margin-bottom: 2rem; }
 .form-title { font-size: 16px; font-weight: 700; color: #1A1A2E; margin-bottom: 0.4rem; }
 .form-sub { font-size: 13px; color: #64748B; margin-bottom: 1.2rem; }
@@ -67,7 +60,6 @@ body { background: #F7F5F0; color: #1A1A2E; }
 .vote-btn { width: 100%; padding: 14px; background: #FFE020; border: none; border-radius: 12px; font-size: 15px; font-weight: 700; color: #111; cursor: pointer; }
 .vote-btn:hover { background: #F5D800; }
 .form-note { font-size: 11px; color: #94A3B8; margin-top: 10px; text-align: center; }
-
 .leaderboard { background: #fff; border: 0.5px solid #E2E8F0; border-radius: 16px; padding: 1.75rem; margin-bottom: 2rem; }
 .lb-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; }
 .lb-title { font-size: 16px; font-weight: 700; color: #1A1A2E; }
@@ -84,14 +76,12 @@ body { background: #F7F5F0; color: #1A1A2E; }
 .lb-bar-wrap { width: 110px; height: 5px; background: #F1F5F9; border-radius: 3px; }
 .lb-bar { height: 5px; border-radius: 3px; background: #FFE020; }
 .lb-count { font-size: 12px; color: #64748B; min-width: 52px; text-align: right; }
-
 .prizes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 2rem; }
 .prize-card { background: #F8FAFC; border: 0.5px solid #E2E8F0; border-radius: 14px; padding: 1.25rem; text-align: center; }
 .prize-badge { display: inline-block; background: #FFE020; color: #111; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px; }
 .prize-num { font-size: 32px; font-weight: 800; color: #111; margin-bottom: 4px; }
 .prize-title { font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 4px; }
 .prize-sub { font-size: 11px; color: #64748B; }
-
 .share-section { background: #111; border-radius: 16px; padding: 1.75rem; text-align: center; margin-bottom: 2rem; }
 .share-title { color: #fff; font-size: 16px; font-weight: 700; margin-bottom: 0.4rem; }
 .share-sub { color: rgba(255,255,255,0.45); font-size: 12px; margin-bottom: 1.2rem; }
@@ -104,7 +94,6 @@ body { background: #F7F5F0; color: #1A1A2E; }
 .s-ig { background: #E1306C; color: #fff; }
 .s-tk { background: #000; color: #fff; border: 1px solid rgba(255,255,255,0.15); }
 .s-x { background: #1DA1F2; color: #fff; }
-
 .footer { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 1.2rem 0 0.5rem; border-top: 0.5px solid #E2E8F0; }
 .footer-badge { background: #FFE020; color: #111; font-size: 10px; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
 .footer-text { font-size: 11px; color: #94A3B8; }
@@ -112,7 +101,6 @@ body { background: #F7F5F0; color: #1A1A2E; }
 </head>
 <body>
 <div class="site">
-
   <div class="nav">
     <div class="nav-logo">i<span>fasi</span>einai<span style="color:rgba(255,255,255,0.25)">.gr</span></div>
     <div style="display:flex;align-items:center;gap:10px">
@@ -124,79 +112,70 @@ body { background: #F7F5F0; color: #1A1A2E; }
     </div>
   </div>
 
-  <!-- CAROUSEL -->
   <div class="carousel">
     <div class="carousel-track" id="carousel-track">
-
       <div class="carousel-slide">
-        <img class="carousel-bg" src="Santorini.png" alt="Μπέσυ Σαντορίνη" onerror="this.style.background='#0D3B66';this.style.height='100%'"/>
+        <img class="carousel-bg" src="Santorini.png" alt="Santorini" onerror="this.style.background='#0D3B66'"/>
         <div class="carousel-overlay"></div>
         <div class="carousel-content">
           <div class="carousel-tag">SUMMER 2026</div>
           <div class="carousel-expression">[ pe-TAO a-po ha-RA ]</div>
-          <div class="carousel-island" id="cs1-island">Πετάω από χαρά</div>
-          <div class="carousel-copy" id="cs1-copy">Δεν πας, πετάς με ελικόπτερο.</div>
-          <button class="carousel-cta" id="cs1-cta">Κλείσε θέση →</button>
+          <div class="carousel-island">Πετάω από χαρά</div>
+          <div class="carousel-copy">Δεν πας, πετάς με ελικόπτερο.</div>
+          <button class="carousel-cta">Κλείσε θέση →</button>
         </div>
       </div>
-
       <div class="carousel-slide">
-        <img class="carousel-bg" src="Mykonos.png" alt="Μύκονος" onerror="this.style.background='#1A6FA8';this.style.height='100%'"/>
+        <img class="carousel-bg" src="Mykonos.png" alt="Mykonos" onerror="this.style.background='#1A6FA8'"/>
         <div class="carousel-overlay"></div>
         <div class="carousel-content">
           <div class="carousel-tag">MYKONOS</div>
           <div class="carousel-expression">[ kap-SOO-ris ]</div>
-          <div class="carousel-island" id="cs2-island">Καψούρης.</div>
-          <div class="carousel-copy" id="cs2-copy">Με τη Μύκονο από την πρώτη στιγμή.</div>
-          <button class="carousel-cta" id="cs2-cta">Ψήφισε Μύκονο →</button>
+          <div class="carousel-island">Καψούρης.</div>
+          <div class="carousel-copy">Με τη Μύκονο από την πρώτη στιγμή.</div>
+          <button class="carousel-cta">Ψήφισε Μύκονο →</button>
         </div>
       </div>
-
       <div class="carousel-slide">
-        <img class="carousel-bg" src="gaycouple.png" alt="Ανάφη couple" onerror="this.style.background='#EF9F27';this.style.height='100%'"/>
+        <img class="carousel-bg" src="gaycouple.png" alt="Anafi" onerror="this.style.background='#EF9F27'"/>
         <div class="carousel-overlay"></div>
         <div class="carousel-content">
           <div class="carousel-tag">ANAFI</div>
           <div class="carousel-expression">[ f-AH-si ]</div>
-          <div class="carousel-island" id="cs3-island">Φέτος η φάση<br>είναι Ανάφη.</div>
-          <div class="carousel-copy" id="cs3-copy">A situationship with a Greek island you can't get over.</div>
-          <button class="carousel-cta" id="cs3-cta">Ψήφισε Ανάφη →</button>
+          <div class="carousel-island">Φέτος η φάση<br>είναι Ανάφη.</div>
+          <div class="carousel-copy">A situationship with a Greek island you can't get over.</div>
+          <button class="carousel-cta">Ψήφισε Ανάφη →</button>
         </div>
       </div>
-
       <div class="carousel-slide">
-        <img class="carousel-bg" src="Master.png" alt="Σέριφος" onerror="this.style.background='#5DCAA5';this.style.height='100%'"/>
+        <img class="carousel-bg" src="Master.png" alt="Master" onerror="this.style.background='#5DCAA5'"/>
         <div class="carousel-overlay"></div>
         <div class="carousel-content">
-          <div class="carousel-tag">[ f-AH-si ]</div>
+          <div class="carousel-tag">GREEK ISLANDS</div>
           <div class="carousel-expression">[ goo-STA-ro ]</div>
-          <div class="carousel-island" id="cs4-island">Γουστάρω.</div>
-          <div class="carousel-copy" id="cs4-copy">Πάτμο. Σύρο. Μύκονο. Σέριφο. Όλα.</div>
-          <button class="carousel-cta" id="cs4-cta">Ψήφισε τώρα →</button>
+          <div class="carousel-island">Γουστάρω.</div>
+          <div class="carousel-copy">Πάτμο. Σύρο. Μύκονο. Σέριφο. Όλα.</div>
+          <button class="carousel-cta">Ψήφισε τώρα →</button>
         </div>
       </div>
-
       <div class="carousel-slide">
-        <img class="carousel-bg" src="Santorini.png" alt="Σαντορίνη sunset" onerror="this.style.background='#CC5500';this.style.height='100%'"/>
+        <img class="carousel-bg" src="Santorini.png" alt="Santorini sunset" onerror="this.style.background='#CC5500'"/>
         <div class="carousel-overlay"></div>
         <div class="carousel-content">
           <div class="carousel-tag">SANTORINI</div>
           <div class="carousel-expression">[ me koo-FAH-nes ]</div>
-          <div class="carousel-island" id="cs5-island">Με κούφανες.</div>
-          <div class="carousel-copy" id="cs5-copy">Η θέα από ελικόπτερο πάνω από τη Σαντορίνη.</div>
-          <button class="carousel-cta" id="cs5-cta">Don't go. Fly Hoper. →</button>
+          <div class="carousel-island">Με κούφανες.</div>
+          <div class="carousel-copy">Η θέα από ελικόπτερο πάνω από τη Σαντορίνη.</div>
+          <button class="carousel-cta">Don't go. Fly Hoper. →</button>
         </div>
       </div>
-
     </div>
-
     <button class="carousel-prev" onclick="moveCarousel(-1)">‹</button>
     <button class="carousel-next" onclick="moveCarousel(1)">›</button>
     <div class="carousel-dots" id="carousel-dots"></div>
   </div>
 
   <div class="section-wrap">
-
     <div class="steps" style="margin-bottom:2rem">
       <div class="step"><div class="step-num">1</div><span id="s1">Επίλεξε νησί</span></div>
       <div class="step-arrow">→</div>
@@ -269,9 +248,14 @@ body { background: #F7F5F0; color: #1A1A2E; }
       <div class="footer-badge">hoper</div>
       <div class="footer-text">flyhoper.com · Don't go. Fly Hoper.</div>
     </div>
-
   </div>
 </div>
+
+<audio id="jingle" loop preload="auto">
+  <source src="Πετάω από χαρά_Flyhoper.mp3" type="audio/mpeg">
+</audio>
+
+<button id="sound-btn" onclick="toggleSound()" style="position:fixed;bottom:1.5rem;right:1.5rem;width:48px;height:48px;border-radius:50%;background:#FFE020;border:none;font-size:20px;cursor:pointer;z-index:999;box-shadow:0 2px 12px rgba(0,0,0,0.2)">🔇</button>
 
 <script>
 const islands = [
@@ -299,6 +283,9 @@ let selected = islands[0];
 let currentSlide = 0;
 const totalSlides = 5;
 let autoplayTimer;
+const audio = document.getElementById('jingle');
+const soundBtn = document.getElementById('sound-btn');
+let playing = false;
 
 function buildDots() {
   const d = document.getElementById('carousel-dots');
@@ -326,6 +313,29 @@ function moveCarousel(dir) {
 function startAutoplay() {
   autoplayTimer = setInterval(() => goToSlide((currentSlide+1)%totalSlides), 4000);
 }
+
+function toggleSound() {
+  if (playing) {
+    audio.pause();
+    soundBtn.textContent = '🔇';
+    playing = false;
+  } else {
+    audio.play().catch(()=>{});
+    soundBtn.textContent = '🔊';
+    playing = true;
+  }
+}
+
+document.addEventListener('click', function startOnFirstClick(e) {
+  if (e.target.id === 'sound-btn') return;
+  if (!playing) {
+    audio.volume = 0.4;
+    audio.play().catch(()=>{});
+    soundBtn.textContent = '🔊';
+    playing = true;
+    document.removeEventListener('click', startOnFirstClick);
+  }
+});
 
 function buildIslands() {
   const grid = document.getElementById('islands-grid');
@@ -391,40 +401,6 @@ startAutoplay();
 buildIslands();
 buildLeaderboard();
 updateCopy();
-</script>
-  
-<audio id="jingle" loop preload="auto">
-  <source src="Πετάω από χαρά_Flyhoper.mp3" type="audio/mpeg">
-</audio>
-
-<button id="sound-btn" onclick="toggleSound()" style="position:fixed;bottom:1.5rem;right:1.5rem;width:48px;height:48px;border-radius:50%;background:#FFE020;border:none;font-size:20px;cursor:pointer;z-index:999;box-shadow:0 2px 12px rgba(0,0,0,0.2)">🔇</button>
-
-<script>
-const audio = document.getElementById('jingle');
-const btn = document.getElementById('sound-btn');
-let playing = false;
-
-document.addEventListener('click', function startOnFirstClick() {
-  if (!playing) {
-    audio.volume = 0.4;
-    audio.play().catch(()=>{});
-    btn.textContent = '🔊';
-    playing = true;
-    document.removeEventListener('click', startOnFirstClick);
-  }
-});
-
-function toggleSound() {
-  if (playing) {
-    audio.pause();
-    btn.textContent = '🔇';
-    playing = false;
-  } else {
-    audio.play().catch(()=>{});
-    btn.textContent = '🔊';
-    playing = true;
-  }
-}
 </script>
 </body>
 </html>
