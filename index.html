@@ -108,7 +108,7 @@ body { background: #F7F5F0; color: #1A1A2E; }
   </div>
 
   <div class="nav">
-    <div class="nav-logo">i<span>fasi</span>einai<span style="color:#fff">hop.com</span></div>
+    <div class="nav-logo">i<span>fasi</span>einai<span style="color:rgba(255,255,255,0.25)">.gr</span></div>
     <div style="display:flex;align-items:center;gap:10px">
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('gr',this)">GR</button>
@@ -250,6 +250,27 @@ body { background: #F7F5F0; color: #1A1A2E; }
       </div>
     </div>
 
+    <div id="jackpot-section" style="background:#111;border-radius:16px;padding:1.75rem;text-align:center;margin-bottom:2rem;">
+      <div style="font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:0.4rem;" id="jp-sub">Δεν ξέρεις την φάση σου;</div>
+      <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:1.4rem;" id="jp-title">Η φάση μου είναι...</div>
+      <div style="display:flex;gap:10px;margin-bottom:1.2rem;">
+        <div style="flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:1rem;height:80px;display:flex;align-items:center;justify-content:center;">
+          <div id="jp-island-display" style="font-size:22px;font-weight:800;color:#FFE020;text-align:center;line-height:1.1;">🏝</div>
+        </div>
+        <div style="flex:2;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:1rem;height:80px;display:flex;align-items:center;justify-content:center;">
+          <div id="jp-ataka-display" style="font-size:12px;color:rgba(255,255,255,0.8);text-align:center;line-height:1.5;">🎰</div>
+        </div>
+      </div>
+      <button id="jackpot-btn" onclick="spinJackpot()" style="width:100%;padding:15px;background:#FFE020;border:none;border-radius:12px;font-size:16px;font-weight:700;color:#111;cursor:pointer;margin-bottom:1rem;">🎰 Βρες την φάση σου →</button>
+      <div id="jackpot-result" style="display:none;">
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+          <button onclick="voteJackpot()" id="jp-vote-btn" style="padding:10px 20px;background:#FFE020;border:none;border-radius:22px;font-size:12px;font-weight:700;color:#111;cursor:pointer;">Ψηφίζω →</button>
+          <button onclick="spinJackpot()" style="padding:10px 20px;background:transparent;border:1px solid rgba(255,255,255,0.3);border-radius:22px;font-size:12px;color:#fff;cursor:pointer;">🎰 Ξανά</button>
+          <button onclick="shareJackpot()" style="padding:10px 20px;background:transparent;border:1px solid rgba(255,255,255,0.3);border-radius:22px;font-size:12px;color:#fff;cursor:pointer;">Share</button>
+        </div>
+      </div>
+    </div>
+
     <div class="footer">
       <div class="footer-badge">hoper</div>
       <div class="footer-text">flyhoper.com · Don't go. Fly Hoper.</div>
@@ -258,7 +279,7 @@ body { background: #F7F5F0; color: #1A1A2E; }
 </div>
 
 <audio id="jingle" loop preload="auto">
-  <source src="jingle.mp3" type="audio/mpeg">
+  <source src="Πετάω από χαρά_Flyhoper.mp3" type="audio/mpeg">
 </audio>
 
 <button id="sound-btn" onclick="toggleSound()" style="position:fixed;bottom:1.5rem;right:1.5rem;width:48px;height:48px;border-radius:50%;background:#FFE020;border:none;font-size:20px;cursor:pointer;z-index:999;box-shadow:0 2px 12px rgba(0,0,0,0.2)">🔇</button>
@@ -397,9 +418,105 @@ function setLang(l, btn) {
   document.getElementById('sh-sub').textContent = gr?'Κάθε share = +1 εγγραφή στην κλήρωση':'Every share = +1 entry';
   document.getElementById('email-in').placeholder = gr?'email σου':'your email';
   document.getElementById('friend-in').placeholder = gr?'email φίλου (optional +1)':"friend's email (optional +1)";
+  setLangJackpot(gr);
   buildIslands();
   buildLeaderboard();
   updateCopy();
+}
+
+const jpIslands = [
+  { name:"Ανάφη", tag:"#FasiEinaiAnafi" },
+  { name:"Ίος", tag:"#FasiEinaiIos" },
+  { name:"Μύκονος", tag:"#FasiEinaiMykonos" },
+  { name:"Μήλος", tag:"#FasiEinaiMilos" },
+  { name:"Φολέγανδρος", tag:"#FasiEinaiFolegandros" },
+  { name:"Κουφονήσια", tag:"#FasiEinaiKoufonisia" },
+  { name:"Σίφνος", tag:"#FasiEinaiSifnos" },
+  { name:"Πάτμος", tag:"#FasiEinaiPatmos" },
+  { name:"Τήνος", tag:"#FasiEinaiTinos" },
+  { name:"Σέριφος", tag:"#FasiEinaiSerifos" },
+  { name:"Σύρος", tag:"#FasiEinaiSyros" },
+  { name:"Σάμος", tag:"#FasiEinaiSamos" },
+];
+
+const jpAtakes = [
+  "Δεν πήγες με πλάνο. Έμεινες με τον Πάνο.",
+  "Είπες «τελευταίο ποτό». Ήρθε η Μαρία.",
+  "Δεν ήταν τίποτα. Ρώτα τον Στέλιο.",
+  "Πήγες για χαλαρά. Βρήκες τον Νίκο.",
+  "Δεν το θυμάσαι καλά. Η Ελένη θυμάται.",
+  "Ήρθες για 3 μέρες. Έφυγες μετά από 10.",
+  "Δεν υπάρχει σήμα. Δεν σε νοιάζει.",
+  "Έχασες το πλοίο. Επίτηδες.",
+  "€40 το mojito. Το παράγγειλες δύο φορές.",
+  "Βρήκες την καλύτερη παραλία της ζωής σου. Δεν λες πού.",
+  "Ήρθες μόνος. Δεν ένιωσες μόνος.",
+  "Δεν ήξερες κανέναν. Τώρα ξέρεις όλους.",
+  "Ήρθες skeptic. Έφυγες believer. Δεν εξηγείς.",
+  "Το μυστικό που δεν θες να πεις σε κανέναν.",
+  "Ήρθες για φαγητό. Έμεινες για κάτι άλλο.",
+  "Δεν είχες πλάνο. Έγινε το καλύτερο καλοκαίρι σου.",
+  "Χωράνε 40 άτομα. Τα ξέρεις όλα μέχρι το βράδυ.",
+  "Δεν ήταν τίποτα. Ήταν τα πάντα.",
+  "Sarakiniko. Τέλος.",
+  "Δεν το περίμενες. Κανείς δεν το περιμένει.",
+  "Ήρθες με διατροφή. Έφυγες χωρίς.",
+  "Λίγο κρασί, λίγο θάλασσα, και τον Μήτσο από τις Μάντρες.",
+  "Δεν υπάρχει ATM. Ούτε χρειάστηκε.",
+  "Πήγες για ένα βράδυ. Έφυγες Τρίτη.",
+  "Ξέρεις γιατί πας. Δεν το παραδέχεσαι.",
+];
+
+let currentJpIsland = null;
+let currentJpAtaka = null;
+let isSpinning = false;
+
+function spinJackpot() {
+  if (isSpinning) return;
+  isSpinning = true;
+  const btn = document.getElementById('jackpot-btn');
+  const result = document.getElementById('jackpot-result');
+  const islandEl = document.getElementById('jp-island-display');
+  const atakaEl = document.getElementById('jp-ataka-display');
+  result.style.display = 'none';
+  btn.textContent = '🎰 ...';
+  let count = 0;
+  const interval = setInterval(() => {
+    islandEl.textContent = jpIslands[Math.floor(Math.random()*jpIslands.length)].name;
+    atakaEl.textContent = jpAtakes[Math.floor(Math.random()*jpAtakes.length)];
+    count++;
+    if (count > 18) {
+      clearInterval(interval);
+      currentJpIsland = jpIslands[Math.floor(Math.random()*jpIslands.length)];
+      currentJpAtaka = jpAtakes[Math.floor(Math.random()*jpAtakes.length)];
+      islandEl.textContent = currentJpIsland.name;
+      atakaEl.textContent = currentJpAtaka;
+      result.style.display = 'block';
+      btn.textContent = '🎰 Βρες την φάση σου →';
+      isSpinning = false;
+      document.getElementById('jp-vote-btn').textContent = `Ψηφίζω ${currentJpIsland.name} →`;
+    }
+  }, 80);
+}
+
+function voteJackpot() {
+  if (!currentJpIsland) return;
+  const isl = islands.find(i => i.nameGr === currentJpIsland.name);
+  if (isl) { selected = isl; buildIslands(); updateCopy(); }
+  document.querySelector('.form-card').scrollIntoView({behavior:'smooth'});
+}
+
+function shareJackpot() {
+  if (!currentJpIsland) return;
+  const text = `[ f-AH-si ] είναι ${currentJpIsland.name}. ${currentJpAtaka} ${currentJpIsland.tag} · ifasieinaihop.com`;
+  if (navigator.share) { navigator.share({text}); }
+  else { navigator.clipboard.writeText(text).then(()=>alert('Copied! 🎰')); }
+}
+
+function setLangJackpot(gr) {
+  document.getElementById('jp-sub').textContent = gr ? 'Δεν ξέρεις την φάση σου;' : "Don't know your fasi?";
+  document.getElementById('jp-title').textContent = gr ? 'Η φάση μου είναι...' : 'My fasi is...';
+  document.getElementById('jackpot-btn').textContent = gr ? '🎰 Βρες την φάση σου →' : '🎰 Find your fasi →';
 }
 
 buildDots();
@@ -410,3 +527,4 @@ updateCopy();
 </script>
 </body>
 </html>
+<!-- FASI JACKPOT SECTION - inject before </div></div> closing tags -->
