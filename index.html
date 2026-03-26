@@ -898,12 +898,12 @@
           document.getElementById('sh-line').textContent =
             lang === 'gr'
               ? `Η φάση μου είναι ${currentJpIsland.name}. ${currentJpAtaka}`
-              : `My f-ΑS-i is ${currentJpIsland.name}. ${currentJpAtaka}`;
+              : `My [ f-AH-si ] is ${currentJpIsland.name}. ${currentJpAtaka}`;
 
           document.getElementById('sh-tag').textContent = `${currentJpIsland.tag} · ifasieinaihop.com`;
 
           result.classList.add('show');
-          btn.textContent = lang === 'gr' ? 'Βρες τη φάση σου →' : 'Find your f-AS-i →';
+          btn.textContent = lang === 'gr' ? 'Βρες τη φάση σου →' : 'Find your [ f-AH-si ] →';
           isSpinning = false;
         }
       }, 80);
@@ -951,15 +951,15 @@
       document.getElementById('vote-btn').textContent = gr ? 'Κατοχύρωση συμμετοχής →' : 'Confirm entry →';
 
       document.getElementById('sh-title').textContent = gr ? 'Μοιράσου το' : 'Share it';
-      document.getElementById('sh-sub').textContent = gr ? 'Βρες τη φάση σου και κάν’ το share.' : 'Find your fasi and share it.';
+      document.getElementById('sh-sub').textContent = gr ? 'Βρες τη φάση σου και κάν’ το share.' : 'Find your [ f-AH-si ] and share it.';
       document.getElementById('email-in').placeholder = gr ? 'email σου' : 'your email';
 
-      document.getElementById('jp-sub').textContent = gr ? 'Δεν ξέρεις τη φάση σου;' : "Don't know your f-AS-i?";
-      document.getElementById('jp-title').textContent = gr ? 'Η φάση μου είναι...' : 'My f-AS-i is...';
-      document.getElementById('jackpot-btn').textContent = gr ? 'Βρες τη φάση σου →' : 'Find your f-AS-i →';
+      document.getElementById('jp-sub').textContent = gr ? 'Δεν ξέρεις τη φάση σου;' : "Don't know your [ f-AH-si ]?";
+      document.getElementById('jp-title').textContent = gr ? 'Η φάση μου είναι...' : 'My [ f-AH-si ] is...';
+      document.getElementById('jackpot-btn').textContent = gr ? 'Βρες τη φάση σου →' : 'Find your [ f-AH-si ] →';
 
       if (!currentJpIsland) {
-        document.getElementById('sh-line').textContent = gr ? 'Η φάση μου είναι...' : 'My f-AS-i is...';
+        document.getElementById('sh-line').textContent = gr ? 'Η φάση μου είναι...' : 'My [ f-AH-si ] is...';
         document.getElementById('sh-tag').textContent = '#FasiEinai · ifasieinaihop.com';
       } else {
         document.getElementById('sh-line').textContent =
