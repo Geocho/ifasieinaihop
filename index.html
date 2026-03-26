@@ -241,8 +241,8 @@
 
     .jackpot-section {
       background: #111;
-      border-radius: 16px;
-      padding: 1.75rem;
+      border-radius: 24px;
+      padding: 2rem;
       text-align: center;
       margin-bottom: 2rem;
     }
@@ -257,33 +257,30 @@
       font-size: 24px;
       font-weight: 800;
       color: #fff;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.6rem;
     }
 
     .slot-wrap {
       display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 10px;
-      margin-bottom: 1.2rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 1.25rem;
       align-items: stretch;
     }
 
     .slot-card {
+      position: relative;
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 12px;
+      border-radius: 18px;
       overflow: hidden;
-      min-height: 220px;
-    }
-
-    .slot-island-card {
-      display: flex;
-      flex-direction: column;
+      min-height: 260px;
+      text-align: left;
     }
 
     .slot-image-wrap {
-      position: relative;
-      height: 150px;
+      position: absolute;
+      inset: 0;
       background: rgba(255,255,255,0.04);
     }
 
@@ -297,49 +294,36 @@
     .slot-image-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.05) 60%, rgba(0,0,0,0) 100%);
+      background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.48) 45%, rgba(0,0,0,0.18) 100%);
     }
 
-    .slot-island-meta {
-      padding: 1rem;
+    .slot-island-content,
+    .slot-ataka-content {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      flex: 1;
-    }
-
-    .slot-island-label {
-      font-size: 11px;
-      color: rgba(255,255,255,0.45);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 4px;
+      justify-content: flex-end;
+      padding: 1.4rem;
     }
 
     .slot-island-text {
-      font-size: 24px;
+      font-size: 34px;
       font-weight: 800;
       color: #FFE020;
+      line-height: 1;
       text-align: left;
-      line-height: 1.1;
-    }
-
-    .slot-ataka-card {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.25rem;
-      min-height: 220px;
     }
 
     .slot-ataka-text {
       font-size: 22px;
-      font-weight: 700;
-      color: rgba(255,255,255,0.92);
+      font-weight: 800;
+      color: rgba(255,255,255,0.96);
       text-align: left;
-      line-height: 1.25;
-      width: 100%;
+      line-height: 1.2;
       white-space: pre-line;
+      max-width: 90%;
     }
 
     .jackpot-btn {
@@ -347,7 +331,7 @@
       padding: 15px;
       background: #FFE020;
       border: none;
-      border-radius: 12px;
+      border-radius: 14px;
       font-size: 16px;
       font-weight: 700;
       color: #111;
@@ -369,17 +353,17 @@
 
     .jackpot-result-actions {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
     }
 
     .jackpot-action {
-      padding: 10px 20px;
-      border-radius: 22px;
-      font-size: 12px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-size: 13px;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .jackpot-action.primary {
@@ -390,7 +374,7 @@
 
     .jackpot-action.ghost {
       background: transparent;
-      border: 1px solid rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,255,255,0.22);
       color: #fff;
     }
 
@@ -659,6 +643,10 @@
         font-size: 18px;
       }
 
+      .slot-island-text {
+        font-size: 28px;
+      }
+
       .share-card-image-wrap {
         height: 200px;
       }
@@ -756,23 +744,28 @@
         <div class="jackpot-title" id="jp-title">Η φάση μου είναι...</div>
 
         <div class="slot-wrap">
-          <div class="slot-card slot-island-card">
+          <div class="slot-card">
             <div class="slot-image-wrap">
               <img id="jp-island-image" class="slot-image" src="" alt="island result" />
               <div class="slot-image-overlay"></div>
             </div>
-            <div class="slot-island-meta">
-              <div class="slot-island-label" id="jp-island-label">νησί</div>
+            <div class="slot-island-content">
               <div id="jp-island-display" class="slot-island-text">🏝</div>
             </div>
           </div>
 
-          <div class="slot-card slot-ataka-card">
-            <div id="jp-ataka-display" class="slot-ataka-text">🎰</div>
+          <div class="slot-card">
+            <div class="slot-image-wrap">
+              <img id="jp-ataka-image" class="slot-image" src="" alt="ataka result" />
+              <div class="slot-image-overlay"></div>
+            </div>
+            <div class="slot-ataka-content">
+              <div id="jp-ataka-display" class="slot-ataka-text">🎰</div>
+            </div>
           </div>
         </div>
 
-        <button id="jackpot-btn" class="jackpot-btn" onclick="spinJackpot()">🎰 Βρες τη φάση σου →</button>
+        <button id="jackpot-btn" class="jackpot-btn" onclick="spinJackpot()">Βρες τη φάση σου →</button>
 
         <div id="jackpot-result" class="jackpot-result">
           <div class="jackpot-result-actions">
@@ -855,21 +848,21 @@
     let playing = false;
     let lang = 'gr';
 
-    const fallbackImage = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=900&fit=crop';
+    const fallbackImage = 'Mykonos.png';
 
     const jpIslands = [
-      { name: "Ανάφη", tag: "#FasiAnafi", image: "gaycouple.png?w=1200&h=900&fit=crop" },
-      { name: "Ίος", tag: "#FasiIos", image: "https://images.unsplash.com/photo-1504512485720-7d83a16ee930?w=1200&h=900&fit=crop" },
-      { name: "Μύκονος", tag: "#FasiMykonos", image: "Mykonos.png?w=1200&h=900&fit=crop" },
-      { name: "Μήλος", tag: "#FasiMilos", image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&h=900&fit=crop" },
-      { name: "Φολέγανδρος", tag: "#FasiFolegandros", image: "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=1200&h=900&fit=crop" },
-      { name: "Κουφονήσια", tag: "#FasiKoufonisia", image: "https://images.unsplash.com/photo-1580541832626-2a7131ee809f?w=1200&h=900&fit=crop" },
-      { name: "Σίφνος", tag: "#FasiSifnos", image: "https://images.unsplash.com/photo-1504512485720-7d83a16ee930?w=1200&h=900&fit=crop" },
-      { name: "Πάτμος", tag: "#FasiPatmos", image: "https://images.unsplash.com/photo-1555993539-1732b0258235?w=1200&h=900&fit=crop" },
-      { name: "Τήνος", tag: "#FasiTinos", image: "Tinos.png?w=1200&h=900&fit=crop" },
-      { name: "Σέριφος", tag: "#FasiSerifos", image: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1200&h=900&fit=crop" },
-      { name: "Σύρος", tag: "#FasiSyros", image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&h=900&fit=crop" },
-      { name: "Σάμος", tag: "#FasiSamos", image: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1200&h=900&fit=crop" }
+      { name: "Ανάφη", tag: "#FasiAnafi", image: "gaycouple.png" },
+      { name: "Ίος", tag: "#FasiIos", image: "Ios.png" },
+      { name: "Μύκονος", tag: "#FasiMykonos", image: "Mykonos.png" },
+      { name: "Μήλος", tag: "#FasiMilos", image: "Milos.png" },
+      { name: "Φολέγανδρος", tag: "#FasiFolegandros", image: "Folegandros.png" },
+      { name: "Κουφονήσια", tag: "#FasiKoufonisia", image: "Koufonisia.png" },
+      { name: "Σίφνος", tag: "#FasiSifnos", image: "Sifnos.png" },
+      { name: "Πάτμος", tag: "#FasiPatmos", image: "Patmos.png" },
+      { name: "Τήνος", tag: "#FasiTinos", image: "Tinos.png" },
+      { name: "Σέριφος", tag: "#FasiSerifos", image: "Serifos.png" },
+      { name: "Σύρος", tag: "#FasiSyros", image: "Syros.png" },
+      { name: "Σάμος", tag: "#FasiSamos", image: "Samos.png" }
     ];
 
     const jpAtakes = [
@@ -1013,6 +1006,7 @@
       const islandEl = document.getElementById('jp-island-display');
       const atakaEl = document.getElementById('jp-ataka-display');
       const islandImg = document.getElementById('jp-island-image');
+      const atakaImg = document.getElementById('jp-ataka-image');
       const shareImg = document.getElementById('sh-image');
       const shareLine = document.getElementById('sh-line');
       const shareTag = document.getElementById('sh-tag');
@@ -1021,6 +1015,7 @@
       atakaEl.textContent = ataka;
 
       setIslandImage(islandImg, island.image);
+      setIslandImage(atakaImg, island.image);
       setIslandImage(shareImg, island.image);
 
       shareLine.textContent =
@@ -1118,13 +1113,13 @@
 
       document.getElementById('jp-sub').textContent = gr ? 'Δεν ξέρεις τη φάση σου;' : "Don't know your [ f-AH-si ]?";
       document.getElementById('jp-title').textContent = gr ? 'Η φάση μου είναι...' : 'My [ f-AH-si ] is...';
-      document.getElementById('jp-island-label').textContent = gr ? 'νησί' : 'island';
       document.getElementById('jackpot-btn').textContent = gr ? 'Βρες τη φάση σου →' : 'Find your [ f-AH-si ] →';
 
       if (!currentJpIsland) {
         document.getElementById('sh-line').textContent = gr ? 'Η φάση μου είναι...' : 'My [ f-AH-si ] is...';
         document.getElementById('sh-tag').textContent = '#FasiEinai · ifasieinaihop.com';
         setIslandImage(document.getElementById('jp-island-image'), fallbackImage);
+        setIslandImage(document.getElementById('jp-ataka-image'), fallbackImage);
         setIslandImage(document.getElementById('sh-image'), fallbackImage);
       } else {
         updateResultUI(currentJpIsland, currentJpAtaka);
