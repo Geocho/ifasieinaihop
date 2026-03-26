@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ifasieinai.gr — Hoper Summer 2026</title>
+  <title>ifasieinai.com</title>
   <style>
     * {
       box-sizing: border-box;
@@ -592,7 +592,7 @@
 <body>
   <div class="site">
     <div id="sound-banner" class="sound-banner" onclick="startSound()">
-      🎵 Κλικ εδώ για να ακούσεις το jingle του καλοκαιριού
+      🎵 Κλικ εδώ για να πορωθείς!
     </div>
 
     <div class="nav">
@@ -612,7 +612,7 @@
           <img class="carousel-bg" src="Santorini.png" alt="Santorini" onerror="this.style.background='#0D3B66'" />
           <div class="carousel-overlay"></div>
           <div class="carousel-content">
-            <div class="carousel-tag">SUMMER 2026</div>
+            <div class="carousel-tag">GREEK ISLANDS</div>
             <div class="carousel-expression">[ pe-TAO a-po ha-RA ]</div>
             <div class="carousel-island">Πετάω από χαρά</div>
             <div class="carousel-copy">Δεν πας, πετάς με ελικόπτερο.</div>
@@ -681,19 +681,19 @@
 
         <div class="slot-wrap">
           <div class="slot-card slot-island">
-            <div id="jp-island-display" class="slot-island-text">🏝</div>
+            <div id="jp-island-display" class="slot-island-text">...</div>
           </div>
           <div class="slot-card slot-ataka">
-            <div id="jp-ataka-display" class="slot-ataka-text">🎰</div>
+            <div id="jp-ataka-display" class="slot-ataka-text">...</div>
           </div>
         </div>
 
-        <button id="jackpot-btn" class="jackpot-btn" onclick="spinJackpot()">🎰 Βρες τη φάση σου →</button>
+        <button id="jackpot-btn" class="jackpot-btn" onclick="spinJackpot()">Βρες τη φάση σου →</button>
 
         <div id="jackpot-result" class="jackpot-result">
           <div class="jackpot-result-actions">
             <button onclick="voteJackpot()" id="jp-vote-btn" class="jackpot-action primary">Το βρήκα →</button>
-            <button onclick="spinJackpot()" class="jackpot-action ghost">🎰 Ξανά</button>
+            <button onclick="spinJackpot()" class="jackpot-action ghost">Ξανά</button>
             <button onclick="shareJackpot()" class="jackpot-action ghost">Share</button>
           </div>
         </div>
@@ -737,7 +737,7 @@
 
       <div class="footer">
         <div class="footer-badge">hoper</div>
-        <div class="footer-text">flyhoper.com · Don't go. Fly Hoper.</div>
+        <div class="footer-text">flyhoper.com · Don't go. Fly.</div>
       </div>
     </div>
   </div>
@@ -765,18 +765,18 @@
     let lang = 'gr';
 
     const jpIslands = [
-      { name: "Ανάφη", tag: "#FasiEinaiAnafi" },
-      { name: "Ίος", tag: "#FasiEinaiIos" },
-      { name: "Μύκονος", tag: "#FasiEinaiMykonos" },
-      { name: "Μήλος", tag: "#FasiEinaiMilos" },
-      { name: "Φολέγανδρος", tag: "#FasiEinaiFolegandros" },
-      { name: "Κουφονήσια", tag: "#FasiEinaiKoufonisia" },
-      { name: "Σίφνος", tag: "#FasiEinaiSifnos" },
-      { name: "Πάτμος", tag: "#FasiEinaiPatmos" },
-      { name: "Τήνος", tag: "#FasiEinaiTinos" },
-      { name: "Σέριφος", tag: "#FasiEinaiSerifos" },
-      { name: "Σύρος", tag: "#FasiEinaiSyros" },
-      { name: "Σάμος", tag: "#FasiEinaiSamos" }
+      { name: "Ανάφη", tag: "#FasiAnafi" },
+      { name: "Ίος", tag: "#FasiIos" },
+      { name: "Μύκονος", tag: "#FasiMykonos" },
+      { name: "Μήλος", tag: "#FasiMilos" },
+      { name: "Φολέγανδρος", tag: "#FasiFolegandros" },
+      { name: "Κουφονήσια", tag: "#FasiKoufonisia" },
+      { name: "Σίφνος", tag: "#FasiSifnos" },
+      { name: "Πάτμος", tag: "#FasiPatmos" },
+      { name: "Τήνος", tag: "#FasiTinos" },
+      { name: "Σέριφος", tag: "#FasiSerifos" },
+      { name: "Σύρος", tag: "#FasiSyros" },
+      { name: "Σάμος", tag: "#FasiSamos" }
     ];
 
     const jpAtakes = [
@@ -787,7 +787,6 @@
       "Δεν το θυμάσαι καλά. Η Ελένη θυμάται.",
       "Ήρθες για 3 μέρες. Έφυγες μετά από 10.",
       "Δεν υπάρχει σήμα. Δεν σε νοιάζει.",
-      "Έχασες το πλοίο. Επίτηδες.",
       "€40 το mojito. Το παρήγγειλες δύο φορές.",
       "Βρήκες την καλύτερη παραλία της ζωής σου. Δεν λες πού.",
       "Ήρθες μόνος. Δεν ένιωσες μόνος.",
@@ -798,7 +797,7 @@
       "Δεν είχες πλάνο. Έγινε το καλύτερο καλοκαίρι σου.",
       "Χωράνε 40 άτομα. Τα ξέρεις όλα μέχρι το βράδυ.",
       "Δεν ήταν τίποτα. Ήταν τα πάντα.",
-      "Sarakiniko. Τέλος.",
+      "Oτι ξέρεις, ξέρω.",
       "Δεν το περίμενες. Κανείς δεν το περιμένει.",
       "Ήρθες με διατροφή. Έφυγες χωρίς.",
       "Λίγο κρασί, λίγο θάλασσα, και τον Μήτσο από τις Μάντρες.",
@@ -876,7 +875,7 @@
       const atakaEl = document.getElementById('jp-ataka-display');
 
       result.classList.remove('show');
-      btn.textContent = lang === 'gr' ? '🎰 Γυρίζει...' : '🎰 Spinning...';
+      btn.textContent = lang === 'gr' ? 'Γυρίζει...' : 'Spinning...';
 
       let count = 0;
 
@@ -899,12 +898,12 @@
           document.getElementById('sh-line').textContent =
             lang === 'gr'
               ? `Η φάση μου είναι ${currentJpIsland.name}. ${currentJpAtaka}`
-              : `My fasi is ${currentJpIsland.name}. ${currentJpAtaka}`;
+              : `My f-ΑS-i is ${currentJpIsland.name}. ${currentJpAtaka}`;
 
           document.getElementById('sh-tag').textContent = `${currentJpIsland.tag} · ifasieinaihop.com`;
 
           result.classList.add('show');
-          btn.textContent = lang === 'gr' ? '🎰 Βρες τη φάση σου →' : '🎰 Find your fasi →';
+          btn.textContent = lang === 'gr' ? 'Βρες τη φάση σου →' : 'Find your f-AS-i →';
           isSpinning = false;
         }
       }, 80);
@@ -955,12 +954,12 @@
       document.getElementById('sh-sub').textContent = gr ? 'Βρες τη φάση σου και κάν’ το share.' : 'Find your fasi and share it.';
       document.getElementById('email-in').placeholder = gr ? 'email σου' : 'your email';
 
-      document.getElementById('jp-sub').textContent = gr ? 'Δεν ξέρεις τη φάση σου;' : "Don't know your fasi?";
-      document.getElementById('jp-title').textContent = gr ? 'Η φάση μου είναι...' : 'My fasi is...';
-      document.getElementById('jackpot-btn').textContent = gr ? '🎰 Βρες τη φάση σου →' : '🎰 Find your fasi →';
+      document.getElementById('jp-sub').textContent = gr ? 'Δεν ξέρεις τη φάση σου;' : "Don't know your f-AS-i?";
+      document.getElementById('jp-title').textContent = gr ? 'Η φάση μου είναι...' : 'My f-AS-i is...';
+      document.getElementById('jackpot-btn').textContent = gr ? '🎰 Βρες τη φάση σου →' : '🎰 Find your f-AS-i →';
 
       if (!currentJpIsland) {
-        document.getElementById('sh-line').textContent = gr ? 'Η φάση μου είναι...' : 'My fasi is...';
+        document.getElementById('sh-line').textContent = gr ? 'Η φάση μου είναι...' : 'My f-AS-i is...';
         document.getElementById('sh-tag').textContent = '#FasiEinai · ifasieinaihop.com';
       } else {
         document.getElementById('sh-line').textContent =
