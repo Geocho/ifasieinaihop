@@ -858,18 +858,18 @@
     const fallbackImage = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=900&fit=crop';
 
     const jpIslands = [
-      { name: "Ανάφη", tag: "#FasiEinaiAnafi", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=900&fit=crop" },
-      { name: "Ίος", tag: "#FasiEinaiIos", image: "https://images.unsplash.com/photo-1504512485720-7d83a16ee930?w=1200&h=900&fit=crop" },
-      { name: "Μύκονος", tag: "#FasiEinaiMykonos", image: "https://images.unsplash.com/photo-1601581875039-e899893d520c?w=1200&h=900&fit=crop" },
-      { name: "Μήλος", tag: "#FasiEinaiMilos", image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&h=900&fit=crop" },
-      { name: "Φολέγανδρος", tag: "#FasiEinaiFolegandros", image: "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=1200&h=900&fit=crop" },
-      { name: "Κουφονήσια", tag: "#FasiEinaiKoufonisia", image: "https://images.unsplash.com/photo-1580541832626-2a7131ee809f?w=1200&h=900&fit=crop" },
-      { name: "Σίφνος", tag: "#FasiEinaiSifnos", image: "https://images.unsplash.com/photo-1504512485720-7d83a16ee930?w=1200&h=900&fit=crop" },
-      { name: "Πάτμος", tag: "#FasiEinaiPatmos", image: "https://images.unsplash.com/photo-1555993539-1732b0258235?w=1200&h=900&fit=crop" },
-      { name: "Τήνος", tag: "#FasiEinaiTinos", image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200&h=900&fit=crop" },
-      { name: "Σέριφος", tag: "#FasiEinaiSerifos", image: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1200&h=900&fit=crop" },
-      { name: "Σύρος", tag: "#FasiEinaiSyros", image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&h=900&fit=crop" },
-      { name: "Σάμος", tag: "#FasiEinaiSamos", image: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1200&h=900&fit=crop" }
+      { name: "Ανάφη", tag: "#FasiAnafi", image: "gaycouple.png?w=1200&h=900&fit=crop" },
+      { name: "Ίος", tag: "#FasiIos", image: "https://images.unsplash.com/photo-1504512485720-7d83a16ee930?w=1200&h=900&fit=crop" },
+      { name: "Μύκονος", tag: "#FasiMykonos", image: "Mykonos.png?w=1200&h=900&fit=crop" },
+      { name: "Μήλος", tag: "#FasiMilos", image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&h=900&fit=crop" },
+      { name: "Φολέγανδρος", tag: "#FasiFolegandros", image: "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=1200&h=900&fit=crop" },
+      { name: "Κουφονήσια", tag: "#FasiKoufonisia", image: "https://images.unsplash.com/photo-1580541832626-2a7131ee809f?w=1200&h=900&fit=crop" },
+      { name: "Σίφνος", tag: "#FasiSifnos", image: "https://images.unsplash.com/photo-1504512485720-7d83a16ee930?w=1200&h=900&fit=crop" },
+      { name: "Πάτμος", tag: "#FasiPatmos", image: "https://images.unsplash.com/photo-1555993539-1732b0258235?w=1200&h=900&fit=crop" },
+      { name: "Τήνος", tag: "#FasiTinos", image: "Tinos.png?w=1200&h=900&fit=crop" },
+      { name: "Σέριφος", tag: "#FasiSerifos", image: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1200&h=900&fit=crop" },
+      { name: "Σύρος", tag: "#FasiSyros", image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&h=900&fit=crop" },
+      { name: "Σάμος", tag: "#FasiSamos", image: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1200&h=900&fit=crop" }
     ];
 
     const jpAtakes = [
@@ -1040,7 +1040,7 @@
       const result = document.getElementById('jackpot-result');
 
       result.classList.remove('show');
-      btn.textContent = lang === 'gr' ? '🎰 Γυρίζει...' : '🎰 Spinning...';
+      btn.textContent = lang === 'gr' ? 'Γυρίζει...' : 'Spinning...';
 
       let count = 0;
 
@@ -1062,7 +1062,7 @@
             lang === 'gr' ? 'Το βρήκα →' : 'This is me →';
 
           result.classList.add('show');
-          btn.textContent = lang === 'gr' ? '🎰 Βρες τη φάση σου →' : '🎰 Find your fasi →';
+          btn.textContent = lang === 'gr' ? 'Βρες τη φάση σου →' : 'Find your [ f-AH-si ] →';
           isSpinning = false;
         }
       }, 80);
@@ -1087,7 +1087,7 @@
         });
       } else if (navigator.clipboard) {
         navigator.clipboard.writeText(text).then(() => {
-          alert(lang === 'gr' ? 'Έτοιμο για paste ✨' : 'Copied ✨');
+          alert(lang === 'gr' ? 'Έτοιμο για paste' : 'Copied');
         });
       } else {
         alert(text);
@@ -1113,16 +1113,16 @@
       document.getElementById('vote-btn').textContent = gr ? 'Κατοχύρωση συμμετοχής →' : 'Confirm entry →';
 
       document.getElementById('sh-title').textContent = gr ? 'Μοιράσου το' : 'Share it';
-      document.getElementById('sh-sub').textContent = gr ? 'Βρες τη φάση σου και κάν’ το share.' : 'Find your fasi and share it.';
+      document.getElementById('sh-sub').textContent = gr ? 'Βρες τη φάση σου και κάν’ το share.' : 'Find your [ f-AH-si ] and share it.';
       document.getElementById('email-in').placeholder = gr ? 'email σου' : 'your email';
 
-      document.getElementById('jp-sub').textContent = gr ? 'Δεν ξέρεις τη φάση σου;' : "Don't know your fasi?";
-      document.getElementById('jp-title').textContent = gr ? 'Η φάση μου είναι...' : 'My fasi is...';
+      document.getElementById('jp-sub').textContent = gr ? 'Δεν ξέρεις τη φάση σου;' : "Don't know your [ f-AH-si ]?";
+      document.getElementById('jp-title').textContent = gr ? 'Η φάση μου είναι...' : 'My [ f-AH-si ] is...';
       document.getElementById('jp-island-label').textContent = gr ? 'νησί' : 'island';
-      document.getElementById('jackpot-btn').textContent = gr ? '🎰 Βρες τη φάση σου →' : '🎰 Find your fasi →';
+      document.getElementById('jackpot-btn').textContent = gr ? 'Βρες τη φάση σου →' : 'Find your [ f-AH-si ] →';
 
       if (!currentJpIsland) {
-        document.getElementById('sh-line').textContent = gr ? 'Η φάση μου είναι...' : 'My fasi is...';
+        document.getElementById('sh-line').textContent = gr ? 'Η φάση μου είναι...' : 'My [ f-AH-si ] is...';
         document.getElementById('sh-tag').textContent = '#FasiEinai · ifasieinaihop.com';
         setIslandImage(document.getElementById('jp-island-image'), fallbackImage);
         setIslandImage(document.getElementById('sh-image'), fallbackImage);
