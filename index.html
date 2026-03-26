@@ -1,530 +1,979 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ifasieinai.gr — Hoper Summer 2026</title>
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-body { background: #F7F5F0; color: #1A1A2E; }
-.site { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
-.sound-banner { background: #FFE020; text-align: center; padding: 12px; font-size: 13px; font-weight: 700; color: #111; cursor: pointer; border-radius: 14px 14px 0 0; letter-spacing: 0.3px; }
-.nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; background: #111; border-radius: 0 0 0 0; margin-bottom: 0; position: relative; z-index: 10; }
-.nav-logo { color: #fff; font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
-.nav-logo span { color: #FFE020; }
-.lang-toggle { display: flex; gap: 4px; }
-.lang-btn { padding: 4px 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.25); background: transparent; color: #fff; font-size: 12px; cursor: pointer; }
-.lang-btn.active { background: #FFE020; color: #111; border-color: #FFE020; font-weight: 700; }
-.hoper-by { background: #FFE020; border-radius: 20px; padding: 4px 12px; font-size: 11px; font-weight: 700; color: #111; }
-.carousel { position: relative; width: 100%; height: 520px; border-radius: 0 0 20px 20px; overflow: hidden; margin-bottom: 2rem; }
-.carousel-track { display: flex; width: 500%; height: 100%; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
-.carousel-slide { width: 20%; height: 100%; position: relative; flex-shrink: 0; }
-.carousel-bg { width: 100%; height: 100%; object-fit: cover; display: block; }
-.carousel-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%); }
-.carousel-content { position: absolute; bottom: 0; left: 0; padding: 2.5rem 2.5rem 2rem; }
-.carousel-expression { font-size: 13px; color: rgba(255,255,255,0.65); font-style: italic; margin-bottom: 6px; letter-spacing: 0.5px; }
-.carousel-island { font-size: 42px; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 6px; text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
-.carousel-copy { font-size: 15px; color: rgba(255,255,255,0.8); margin-bottom: 1.2rem; max-width: 360px; line-height: 1.5; }
-.carousel-cta { display: inline-flex; align-items: center; gap: 8px; background: #FFE020; color: #111; font-size: 13px; font-weight: 700; padding: 10px 20px; border-radius: 30px; cursor: pointer; border: none; }
-.carousel-dots { position: absolute; bottom: 1.5rem; right: 2rem; display: flex; gap: 6px; }
-.dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: all 0.2s; border: none; padding: 0; }
-.dot.active { background: #FFE020; width: 22px; border-radius: 4px; }
-.carousel-prev, .carousel-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; width: 38px; height: 38px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-.carousel-prev { left: 1rem; }
-.carousel-next { right: 1rem; }
-.carousel-prev:hover, .carousel-next:hover { background: rgba(255,255,255,0.3); }
-.carousel-tag { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; letter-spacing: 1px; }
-.section-wrap { padding: 0 0.5rem; }
-.section-label { font-size: 11px; font-weight: 600; color: #94A3B8; letter-spacing: 2px; text-align: center; margin-bottom: 1.2rem; }
-.steps { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin-bottom: 2rem; }
-.step { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #64748B; }
-.step-num { width: 24px; height: 24px; border-radius: 50%; background: #111; color: #FFE020; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.step-arrow { color: #CBD5E1; font-size: 12px; }
-.islands-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 2.5rem; }
-.island-pill { display: flex; align-items: center; gap: 8px; padding: 5px 14px 5px 5px; background: #fff; border: 1.5px solid #E2E8F0; border-radius: 50px; cursor: pointer; transition: all 0.15s; }
-.island-pill:hover { border-color: #94A3B8; }
-.island-pill.selected { border-color: #FFE020; border-width: 2px; background: #FFFDE7; }
-.island-thumb { width: 32px; height: 32px; border-radius: 50%; background: #E2E8F0; overflow: hidden; flex-shrink: 0; }
-.island-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-.island-pname { font-size: 13px; font-weight: 600; color: #1A1A2E; }
-.island-check { width: 16px; height: 16px; border-radius: 50%; background: #FFE020; display: none; align-items: center; justify-content: center; font-size: 9px; color: #111; font-weight: 700; flex-shrink: 0; }
-.island-pill.selected .island-check { display: flex; }
-.form-card { background: #fff; border: 0.5px solid #E2E8F0; border-radius: 16px; padding: 1.75rem; margin-bottom: 2rem; }
-.form-title { font-size: 16px; font-weight: 700; color: #1A1A2E; margin-bottom: 0.4rem; }
-.form-sub { font-size: 13px; color: #64748B; margin-bottom: 1.2rem; }
-.form-row { display: flex; gap: 8px; margin-bottom: 12px; }
-.form-input { flex: 1; padding: 10px 14px; border: 1px solid #E2E8F0; border-radius: 10px; background: #F8FAFC; font-size: 13px; color: #1A1A2E; outline: none; }
-.form-input:focus { border-color: #FFE020; background: #fff; }
-.follow-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
-.follow-pill { background: #F1F5F9; border: 1px solid #E2E8F0; border-radius: 20px; padding: 5px 12px; font-size: 12px; color: #334155; font-weight: 500; }
-.follow-ok { width: 20px; height: 20px; border-radius: 50%; background: #22C55E; display: flex; align-items: center; justify-content: center; font-size: 10px; color: white; font-weight: 700; flex-shrink: 0; }
-.vote-btn { width: 100%; padding: 14px; background: #FFE020; border: none; border-radius: 12px; font-size: 15px; font-weight: 700; color: #111; cursor: pointer; }
-.vote-btn:hover { background: #F5D800; }
-.form-note { font-size: 11px; color: #94A3B8; margin-top: 10px; text-align: center; }
-.leaderboard { background: #fff; border: 0.5px solid #E2E8F0; border-radius: 16px; padding: 1.75rem; margin-bottom: 2rem; }
-.lb-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; }
-.lb-title { font-size: 16px; font-weight: 700; color: #1A1A2E; }
-.lb-live { display: flex; align-items: center; gap: 5px; font-size: 11px; color: #E24B4A; font-weight: 600; }
-.lb-dot { width: 7px; height: 7px; border-radius: 50%; background: #E24B4A; animation: pulse 1.5s infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-.lb-row { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 0.5px solid #F1F5F9; }
-.lb-row:last-child { border-bottom: none; }
-.lb-num { font-size: 12px; font-weight: 600; color: #94A3B8; width: 22px; text-align: center; }
-.lb-num.gold { color: #BA7517; }
-.lb-limg { width: 30px; height: 30px; border-radius: 50%; background: #E2E8F0; overflow: hidden; flex-shrink: 0; }
-.lb-limg img { width: 100%; height: 100%; object-fit: cover; }
-.lb-name { flex: 1; font-size: 13px; font-weight: 500; color: #1A1A2E; }
-.lb-bar-wrap { width: 110px; height: 5px; background: #F1F5F9; border-radius: 3px; }
-.lb-bar { height: 5px; border-radius: 3px; background: #FFE020; }
-.lb-count { font-size: 12px; color: #64748B; min-width: 52px; text-align: right; }
-.prizes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 2rem; }
-.prize-card { background: #F8FAFC; border: 0.5px solid #E2E8F0; border-radius: 14px; padding: 1.25rem; text-align: center; }
-.prize-badge { display: inline-block; background: #FFE020; color: #111; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px; }
-.prize-num { font-size: 32px; font-weight: 800; color: #111; margin-bottom: 4px; }
-.prize-title { font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 4px; }
-.prize-sub { font-size: 11px; color: #64748B; }
-.share-section { background: #111; border-radius: 16px; padding: 1.75rem; text-align: center; margin-bottom: 2rem; }
-.share-title { color: #fff; font-size: 16px; font-weight: 700; margin-bottom: 0.4rem; }
-.share-sub { color: rgba(255,255,255,0.45); font-size: 12px; margin-bottom: 1.2rem; }
-.share-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.2rem; margin-bottom: 1.2rem; }
-.share-word { color: #FFE020; font-size: 22px; font-weight: 700; margin-bottom: 4px; }
-.share-line { color: rgba(255,255,255,0.8); font-size: 14px; margin-bottom: 4px; }
-.share-tag { color: rgba(255,255,255,0.3); font-size: 11px; }
-.share-btns { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-.share-btn { padding: 9px 22px; border-radius: 22px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; }
-.s-ig { background: #E1306C; color: #fff; }
-.s-tk { background: #000; color: #fff; border: 1px solid rgba(255,255,255,0.15); }
-.s-x { background: #1DA1F2; color: #fff; }
-.footer { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 1.2rem 0 0.5rem; border-top: 0.5px solid #E2E8F0; }
-.footer-badge { background: #FFE020; color: #111; font-size: 10px; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
-.footer-text { font-size: 11px; color: #94A3B8; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ifasieinai.gr — Hoper Summer 2026</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #F7F5F0;
+      color: #1A1A2E;
+    }
+
+    .site {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    .sound-banner {
+      background: #FFE020;
+      text-align: center;
+      padding: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #111;
+      cursor: pointer;
+      border-radius: 14px 14px 0 0;
+      letter-spacing: 0.3px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background: #111;
+      margin-bottom: 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .nav-logo {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-logo span {
+      color: #FFE020;
+    }
+
+    .lang-toggle {
+      display: flex;
+      gap: 4px;
+    }
+
+    .lang-btn {
+      padding: 4px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: transparent;
+      color: #fff;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .lang-btn.active {
+      background: #FFE020;
+      color: #111;
+      border-color: #FFE020;
+      font-weight: 700;
+    }
+
+    .hoper-by {
+      background: #FFE020;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      border-radius: 0 0 20px 20px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .carousel-track {
+      display: flex;
+      width: 500%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .carousel-slide {
+      width: 20%;
+      height: 100%;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .carousel-bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%);
+    }
+
+    .carousel-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 2.5rem 2.5rem 2rem;
+    }
+
+    .carousel-expression {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      font-style: italic;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .carousel-island {
+      font-size: 42px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 6px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .carousel-copy {
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 1.2rem;
+      max-width: 360px;
+      line-height: 1.5;
+    }
+
+    .carousel-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFE020;
+      color: #111;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      padding: 0;
+    }
+
+    .dot.active {
+      background: #FFE020;
+      width: 22px;
+      border-radius: 4px;
+    }
+
+    .carousel-prev,
+    .carousel-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .carousel-prev {
+      left: 1rem;
+    }
+
+    .carousel-next {
+      right: 1rem;
+    }
+
+    .carousel-prev:hover,
+    .carousel-next:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .carousel-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .section-wrap {
+      padding: 0 0.5rem;
+    }
+
+    .jackpot-section {
+      background: #111;
+      border-radius: 16px;
+      padding: 1.75rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .jackpot-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 0.4rem;
+    }
+
+    .jackpot-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1.4rem;
+    }
+
+    .slot-wrap {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1.2rem;
+    }
+
+    .slot-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 1rem;
+      min-height: 92px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slot-island {
+      flex: 1;
+    }
+
+    .slot-ataka {
+      flex: 2;
+    }
+
+    .slot-island-text {
+      font-size: 22px;
+      font-weight: 800;
+      color: #FFE020;
+      text-align: center;
+      line-height: 1.1;
+    }
+
+    .slot-ataka-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      line-height: 1.45;
+    }
+
+    .jackpot-btn {
+      width: 100%;
+      padding: 15px;
+      background: #FFE020;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #111;
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+
+    .jackpot-btn:hover {
+      background: #F5D800;
+    }
+
+    .jackpot-result {
+      display: none;
+    }
+
+    .jackpot-result.show {
+      display: block;
+    }
+
+    .jackpot-result-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .jackpot-action {
+      padding: 10px 20px;
+      border-radius: 22px;
+      font-size: 12px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .jackpot-action.primary {
+      background: #FFE020;
+      border: none;
+      color: #111;
+    }
+
+    .jackpot-action.ghost {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+    }
+
+    .form-card {
+      background: #fff;
+      border: 0.5px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .form-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1A1A2E;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-sub {
+      font-size: 13px;
+      color: #64748B;
+      margin-bottom: 1.2rem;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .form-input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      background: #F8FAFC;
+      font-size: 13px;
+      color: #1A1A2E;
+      outline: none;
+    }
+
+    .form-input:focus {
+      border-color: #FFE020;
+      background: #fff;
+    }
+
+    .follow-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .follow-pill {
+      background: #F1F5F9;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 12px;
+      color: #334155;
+      font-weight: 500;
+    }
+
+    .follow-ok {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #22C55E;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: white;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .vote-btn {
+      width: 100%;
+      padding: 14px;
+      background: #FFE020;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .vote-btn:hover {
+      background: #F5D800;
+    }
+
+    .form-note {
+      font-size: 11px;
+      color: #94A3B8;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .share-section {
+      background: #111;
+      border-radius: 16px;
+      padding: 1.75rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .share-title {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .share-sub {
+      color: rgba(255,255,255,0.45);
+      font-size: 12px;
+      margin-bottom: 1.2rem;
+    }
+
+    .share-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .share-word {
+      color: #FFE020;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .share-line {
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+
+    .share-tag {
+      color: rgba(255,255,255,0.3);
+      font-size: 11px;
+    }
+
+    .share-btns {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .share-btn {
+      padding: 9px 22px;
+      border-radius: 22px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+    }
+
+    .s-ig {
+      background: #E1306C;
+      color: #fff;
+    }
+
+    .s-tk {
+      background: #000;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .s-x {
+      background: #1DA1F2;
+      color: #fff;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 1.2rem 0 0.5rem;
+      border-top: 0.5px solid #E2E8F0;
+    }
+
+    .footer-badge {
+      background: #FFE020;
+      color: #111;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .footer-text {
+      font-size: 11px;
+      color: #94A3B8;
+    }
+
+    @media (max-width: 768px) {
+      .slot-wrap {
+        flex-direction: column;
+      }
+
+      .carousel {
+        height: 440px;
+      }
+
+      .carousel-content {
+        padding: 2rem 1.25rem 1.5rem;
+      }
+
+      .carousel-island {
+        font-size: 34px;
+      }
+
+      .nav {
+        padding: 1rem;
+      }
+
+      .site {
+        padding: 1rem;
+      }
+
+      .footer {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="site">
+  <div class="site">
+    <div id="sound-banner" class="sound-banner" onclick="startSound()">
+      🎵 Κλικ εδώ για να ακούσεις το jingle του καλοκαιριού
+    </div>
 
-  <div id="sound-banner" class="sound-banner" onclick="startSound()">
-    🎵 Κλικ εδώ για να ακούσεις το jingle του καλοκαιριού
+    <div class="nav">
+      <div class="nav-logo">i<span>fasi</span>einai<span style="color:rgba(255,255,255,0.25)">.gr</span></div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="lang-toggle">
+          <button class="lang-btn active" onclick="setLang('gr', this)">GR</button>
+          <button class="lang-btn" onclick="setLang('en', this)">EN</button>
+        </div>
+        <div class="hoper-by">by hoper</div>
+      </div>
+    </div>
+
+    <div class="carousel">
+      <div class="carousel-track" id="carousel-track">
+        <div class="carousel-slide">
+          <img class="carousel-bg" src="Santorini.png" alt="Santorini" onerror="this.style.background='#0D3B66'" />
+          <div class="carousel-overlay"></div>
+          <div class="carousel-content">
+            <div class="carousel-tag">SUMMER 2026</div>
+            <div class="carousel-expression">[ pe-TAO a-po ha-RA ]</div>
+            <div class="carousel-island">Πετάω από χαρά</div>
+            <div class="carousel-copy">Δεν πας, πετάς με ελικόπτερο.</div>
+            <button class="carousel-cta">Κλείσε θέση →</button>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <img class="carousel-bg" src="Mykonos.png" alt="Mykonos" onerror="this.style.background='#1A6FA8'" />
+          <div class="carousel-overlay"></div>
+          <div class="carousel-content">
+            <div class="carousel-tag">MYKONOS</div>
+            <div class="carousel-expression">[ kap-SOO-ris ]</div>
+            <div class="carousel-island">Καψούρης.</div>
+            <div class="carousel-copy">Με τη Μύκονο από την πρώτη στιγμή.</div>
+            <button class="carousel-cta">Don't go. Fly. →</button>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <img class="carousel-bg" src="gaycouple.png" alt="Anafi" onerror="this.style.background='#EF9F27'" />
+          <div class="carousel-overlay"></div>
+          <div class="carousel-content">
+            <div class="carousel-tag">ANAFI</div>
+            <div class="carousel-expression">[ f-AH-si ]</div>
+            <div class="carousel-island">Φέτος η φάση<br />είναι Ανάφη.</div>
+            <div class="carousel-copy">A situationship with a Greek island you can't get over.</div>
+            <button class="carousel-cta">Don't go. Fly. →</button>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <img class="carousel-bg" src="Master.png" alt="Master" onerror="this.style.background='#5DCAA5'" />
+          <div class="carousel-overlay"></div>
+          <div class="carousel-content">
+            <div class="carousel-tag">GREEK ISLANDS</div>
+            <div class="carousel-expression">[ goo-STA-ro ]</div>
+            <div class="carousel-island">Γουστάρω.</div>
+            <div class="carousel-copy">Πάτμο. Σύρο. Μύκονο. Σέριφο. Όλα.</div>
+            <button class="carousel-cta">Don't go. Fly. →</button>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <img class="carousel-bg" src="Santorini.png" alt="Santorini sunset" onerror="this.style.background='#CC5500'" />
+          <div class="carousel-overlay"></div>
+          <div class="carousel-content">
+            <div class="carousel-tag">SANTORINI</div>
+            <div class="carousel-expression">[ me koo-FAH-nes ]</div>
+            <div class="carousel-island">Με κούφανες.</div>
+            <div class="carousel-copy">Η θέα από ελικόπτερο πάνω από τη Σαντορίνη.</div>
+            <button class="carousel-cta">Don't go. Fly Hoper. →</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-prev" onclick="moveCarousel(-1)">‹</button>
+      <button class="carousel-next" onclick="moveCarousel(1)">›</button>
+      <div class="carousel-dots" id="carousel-dots"></div>
+    </div>
+
+    <div class="section-wrap">
+      <div id="jackpot-section" class="jackpot-section">
+        <div class="jackpot-sub" id="jp-sub">Δεν ξέρεις τη φάση σου;</div>
+        <div class="jackpot-title" id="jp-title">Η φάση μου είναι...</div>
+
+        <div class="slot-wrap">
+          <div class="slot-card slot-island">
+            <div id="jp-island-display" class="slot-island-text">🏝</div>
+          </div>
+          <div class="slot-card slot-ataka">
+            <div id="jp-ataka-display" class="slot-ataka-text">🎰</div>
+          </div>
+        </div>
+
+        <button id="jackpot-btn" class="jackpot-btn" onclick="spinJackpot()">🎰 Βρες τη φάση σου →</button>
+
+        <div id="jackpot-result" class="jackpot-result">
+          <div class="jackpot-result-actions">
+            <button onclick="voteJackpot()" id="jp-vote-btn" class="jackpot-action primary">Το βρήκα →</button>
+            <button onclick="spinJackpot()" class="jackpot-action ghost">🎰 Ξανά</button>
+            <button onclick="shareJackpot()" class="jackpot-action ghost">Share</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-title" id="form-title">Μπες στην κλήρωση</div>
+        <div class="form-sub" id="form-sub">Κάνε spin, follow και βάλε το email σου για να μπεις στην κλήρωση.</div>
+
+        <div class="follow-row">
+          <div class="follow-ok">✓</div>
+          <div class="follow-pill">@flyhoper</div>
+          <div class="follow-pill">@rayban_greece</div>
+          <span style="font-size:11px;color:#94A3B8">follow required</span>
+        </div>
+
+        <div class="form-row">
+          <input class="form-input" type="email" id="email-in" placeholder="email σου" />
+        </div>
+
+        <button class="vote-btn" id="vote-btn">Κατοχύρωση συμμετοχής →</button>
+        <div class="form-note" id="form-note">Ισχύουν όροι και προϋποθέσεις · flyhoper.com</div>
+      </div>
+
+      <div class="share-section">
+        <div class="share-title" id="sh-title">Μοιράσου το</div>
+        <div class="share-sub" id="sh-sub">Βρες τη φάση σου και κάν’ το share.</div>
+
+        <div class="share-card">
+          <div class="share-word">[ f-AH-si ]</div>
+          <div class="share-line" id="sh-line">Η φάση μου είναι...</div>
+          <div class="share-tag" id="sh-tag">#FasiEinai · ifasieinaihop.com</div>
+        </div>
+
+        <div class="share-btns">
+          <button class="share-btn s-ig" onclick="shareJackpot()">Instagram</button>
+          <button class="share-btn s-tk" onclick="shareJackpot()">TikTok</button>
+          <button class="share-btn s-x" onclick="shareJackpot()">X</button>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="footer-badge">hoper</div>
+        <div class="footer-text">flyhoper.com · Don't go. Fly Hoper.</div>
+      </div>
+    </div>
   </div>
 
-  <div class="nav">
-    <div class="nav-logo">i<span>fasi</span>einai<span style="color:rgba(255,255,255,0.25)">.gr</span></div>
-    <div style="display:flex;align-items:center;gap:10px">
-      <div class="lang-toggle">
-        <button class="lang-btn active" onclick="setLang('gr',this)">GR</button>
-        <button class="lang-btn" onclick="setLang('en',this)">EN</button>
-      </div>
-      <div class="hoper-by">by hoper</div>
-    </div>
-  </div>
+  <audio id="jingle" loop preload="auto">
+    <source src="Πετάω από χαρά_Flyhoper.mp3" type="audio/mpeg" />
+  </audio>
 
-  <div class="carousel">
-    <div class="carousel-track" id="carousel-track">
-      <div class="carousel-slide">
-        <img class="carousel-bg" src="Santorini.png" alt="Santorini" onerror="this.style.background='#0D3B66'"/>
-        <div class="carousel-overlay"></div>
-        <div class="carousel-content">
-          <div class="carousel-tag">SUMMER 2026</div>
-          <div class="carousel-expression">[ pe-TAO a-po ha-RA ]</div>
-          <div class="carousel-island">Πετάω από χαρά</div>
-          <div class="carousel-copy">Δεν πας, πετάς με ελικόπτερο.</div>
-          <button class="carousel-cta">Κλείσε θέση →</button>
-        </div>
-      </div>
-      <div class="carousel-slide">
-        <img class="carousel-bg" src="Mykonos.png" alt="Mykonos" onerror="this.style.background='#1A6FA8'"/>
-        <div class="carousel-overlay"></div>
-        <div class="carousel-content">
-          <div class="carousel-tag">MYKONOS</div>
-          <div class="carousel-expression">[ kap-SOO-ris ]</div>
-          <div class="carousel-island">Καψούρης.</div>
-          <div class="carousel-copy">Με τη Μύκονο από την πρώτη στιγμή.</div>
-          <button class="carousel-cta">Ψήφισε Μύκονο →</button>
-        </div>
-      </div>
-      <div class="carousel-slide">
-        <img class="carousel-bg" src="gaycouple.png" alt="Anafi" onerror="this.style.background='#EF9F27'"/>
-        <div class="carousel-overlay"></div>
-        <div class="carousel-content">
-          <div class="carousel-tag">ANAFI</div>
-          <div class="carousel-expression">[ f-AH-si ]</div>
-          <div class="carousel-island">Φέτος η φάση<br>είναι Ανάφη.</div>
-          <div class="carousel-copy">A situationship with a Greek island you can't get over.</div>
-          <button class="carousel-cta">Ψήφισε Ανάφη →</button>
-        </div>
-      </div>
-      <div class="carousel-slide">
-        <img class="carousel-bg" src="Master.png" alt="Master" onerror="this.style.background='#5DCAA5'"/>
-        <div class="carousel-overlay"></div>
-        <div class="carousel-content">
-          <div class="carousel-tag">GREEK ISLANDS</div>
-          <div class="carousel-expression">[ goo-STA-ro ]</div>
-          <div class="carousel-island">Γουστάρω.</div>
-          <div class="carousel-copy">Πάτμο. Σύρο. Μύκονο. Σέριφο. Όλα.</div>
-          <button class="carousel-cta">Ψήφισε τώρα →</button>
-        </div>
-      </div>
-      <div class="carousel-slide">
-        <img class="carousel-bg" src="Santorini.png" alt="Santorini sunset" onerror="this.style.background='#CC5500'"/>
-        <div class="carousel-overlay"></div>
-        <div class="carousel-content">
-          <div class="carousel-tag">SANTORINI</div>
-          <div class="carousel-expression">[ me koo-FAH-nes ]</div>
-          <div class="carousel-island">Με κούφανες.</div>
-          <div class="carousel-copy">Η θέα από ελικόπτερο πάνω από τη Σαντορίνη.</div>
-          <button class="carousel-cta">Don't go. Fly Hoper. →</button>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-prev" onclick="moveCarousel(-1)">‹</button>
-    <button class="carousel-next" onclick="moveCarousel(1)">›</button>
-    <div class="carousel-dots" id="carousel-dots"></div>
-  </div>
+  <button
+    id="sound-btn"
+    onclick="toggleSound()"
+    style="position:fixed;bottom:1.5rem;right:1.5rem;width:48px;height:48px;border-radius:50%;background:#FFE020;border:none;font-size:20px;cursor:pointer;z-index:999;box-shadow:0 2px 12px rgba(0,0,0,0.2)"
+  >
+    🔇
+  </button>
 
-  <div class="section-wrap">
-    <div class="steps" style="margin-bottom:2rem">
-      <div class="step"><div class="step-num">1</div><span id="s1">Επίλεξε νησί</span></div>
-      <div class="step-arrow">→</div>
-      <div class="step"><div class="step-num">2</div><span id="s2">Follow @flyhoper</span></div>
-      <div class="step-arrow">→</div>
-      <div class="step"><div class="step-num">3</div><span id="s3">Tag έναν φίλο</span></div>
-      <div class="step-arrow">→</div>
-      <div class="step"><div class="step-num">4</div><span id="s4">Share & κέρδισε</span></div>
-    </div>
+  <script>
+    const totalSlides = 5;
+    let currentSlide = 0;
+    let autoplayTimer;
 
-    <div class="section-label" id="islands-label">ΕΠΙΛΕΞΕ ΤΟ ΝΗΣΙ ΣΟΥ</div>
-    <div class="islands-grid" id="islands-grid"></div>
+    const audio = document.getElementById('jingle');
+    const soundBtn = document.getElementById('sound-btn');
+    let playing = false;
+    let lang = 'gr';
 
-    <div class="form-card">
-      <div class="form-title" id="form-title">Μπες στην κλήρωση</div>
-      <div class="form-sub" id="form-sub">Συμπλήρωσε τα στοιχεία σου και ψήφισε.</div>
-      <div class="form-row">
-        <input class="form-input" type="email" id="email-in" placeholder="email σου"/>
-        <input class="form-input" type="text" id="friend-in" placeholder="email φίλου (optional +1)"/>
-      </div>
-      <div class="follow-row">
-        <div class="follow-ok">✓</div>
-        <div class="follow-pill">@flyhoper</div>
-        <div class="follow-pill">@rayban_greece</div>
-        <span style="font-size:11px;color:#94A3B8">follow required</span>
-      </div>
-      <button class="vote-btn" id="vote-btn">Ψηφίζω Ανάφη →</button>
-      <div class="form-note" id="form-note">Ισχύουν όροι και προϋποθέσεις · flyhoper.com</div>
-    </div>
+    const jpIslands = [
+      { name: "Ανάφη", tag: "#FasiEinaiAnafi" },
+      { name: "Ίος", tag: "#FasiEinaiIos" },
+      { name: "Μύκονος", tag: "#FasiEinaiMykonos" },
+      { name: "Μήλος", tag: "#FasiEinaiMilos" },
+      { name: "Φολέγανδρος", tag: "#FasiEinaiFolegandros" },
+      { name: "Κουφονήσια", tag: "#FasiEinaiKoufonisia" },
+      { name: "Σίφνος", tag: "#FasiEinaiSifnos" },
+      { name: "Πάτμος", tag: "#FasiEinaiPatmos" },
+      { name: "Τήνος", tag: "#FasiEinaiTinos" },
+      { name: "Σέριφος", tag: "#FasiEinaiSerifos" },
+      { name: "Σύρος", tag: "#FasiEinaiSyros" },
+      { name: "Σάμος", tag: "#FasiEinaiSamos" }
+    ];
 
-    <div class="leaderboard">
-      <div class="lb-header">
-        <div class="lb-title" id="lb-title">Leaderboard</div>
-        <div class="lb-live"><div class="lb-dot"></div>Live</div>
-      </div>
-      <div id="lb-rows"></div>
-    </div>
+    const jpAtakes = [
+      "Δεν πήγες με πλάνο. Έμεινες με τον Πάνο.",
+      "Είπες «τελευταίο ποτό». Ήρθε η Μαρία.",
+      "Δεν ήταν τίποτα. Ρώτα τον Στέλιο.",
+      "Πήγες για χαλαρά. Βρήκες τον Νίκο.",
+      "Δεν το θυμάσαι καλά. Η Ελένη θυμάται.",
+      "Ήρθες για 3 μέρες. Έφυγες μετά από 10.",
+      "Δεν υπάρχει σήμα. Δεν σε νοιάζει.",
+      "Έχασες το πλοίο. Επίτηδες.",
+      "€40 το mojito. Το παρήγγειλες δύο φορές.",
+      "Βρήκες την καλύτερη παραλία της ζωής σου. Δεν λες πού.",
+      "Ήρθες μόνος. Δεν ένιωσες μόνος.",
+      "Δεν ήξερες κανέναν. Τώρα ξέρεις όλους.",
+      "Ήρθες skeptic. Έφυγες believer. Δεν εξηγείς.",
+      "Το μυστικό που δεν θες να πεις σε κανέναν.",
+      "Ήρθες για φαγητό. Έμεινες για κάτι άλλο.",
+      "Δεν είχες πλάνο. Έγινε το καλύτερο καλοκαίρι σου.",
+      "Χωράνε 40 άτομα. Τα ξέρεις όλα μέχρι το βράδυ.",
+      "Δεν ήταν τίποτα. Ήταν τα πάντα.",
+      "Sarakiniko. Τέλος.",
+      "Δεν το περίμενες. Κανείς δεν το περιμένει.",
+      "Ήρθες με διατροφή. Έφυγες χωρίς.",
+      "Λίγο κρασί, λίγο θάλασσα, και τον Μήτσο από τις Μάντρες.",
+      "Δεν υπάρχει ATM. Ούτε χρειάστηκε.",
+      "Πήγες για ένα βράδυ. Έφυγες Τρίτη.",
+      "Ξέρεις γιατί πας. Δεν το παραδέχεσαι."
+    ];
 
-    <div class="prizes">
-      <div class="prize-card">
-        <div class="prize-badge">GRAND PRIZE</div>
-        <div class="prize-num">1</div>
-        <div class="prize-title" id="p1t">ταξίδι για 2</div>
-        <div class="prize-sub" id="p1s">Hoper flight στο νικητήριο νησί</div>
-      </div>
-      <div class="prize-card">
-        <div class="prize-badge">RAY-BAN</div>
-        <div class="prize-num">10</div>
-        <div class="prize-title" id="p2t">ζευγάρια Ray-Ban</div>
-        <div class="prize-sub" id="p2s">Αξία €200 το ζεύγος</div>
-      </div>
-    </div>
+    let currentJpIsland = null;
+    let currentJpAtaka = null;
+    let isSpinning = false;
 
-    <div class="share-section">
-      <div class="share-title" id="sh-title">Μοιράσου το</div>
-      <div class="share-sub" id="sh-sub">Κάθε share = +1 εγγραφή στην κλήρωση</div>
-      <div class="share-card">
-        <div class="share-word">[ f-AH-si ]</div>
-        <div class="share-line" id="sh-line">Φέτος η φάση μου είναι Ανάφη.</div>
-        <div class="share-tag" id="sh-tag">#FasiEinaiAnafi · flyhoper.com</div>
-      </div>
-      <div class="share-btns">
-        <button class="share-btn s-ig">Instagram</button>
-        <button class="share-btn s-tk">TikTok</button>
-        <button class="share-btn s-x">X</button>
-      </div>
-    </div>
-
-    <div id="jackpot-section" style="background:#111;border-radius:16px;padding:1.75rem;text-align:center;margin-bottom:2rem;">
-      <div style="font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:0.4rem;" id="jp-sub">Δεν ξέρεις την φάση σου;</div>
-      <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:1.4rem;" id="jp-title">Η φάση μου είναι...</div>
-      <div style="display:flex;gap:10px;margin-bottom:1.2rem;">
-        <div style="flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:1rem;height:80px;display:flex;align-items:center;justify-content:center;">
-          <div id="jp-island-display" style="font-size:22px;font-weight:800;color:#FFE020;text-align:center;line-height:1.1;">🏝</div>
-        </div>
-        <div style="flex:2;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:1rem;height:80px;display:flex;align-items:center;justify-content:center;">
-          <div id="jp-ataka-display" style="font-size:12px;color:rgba(255,255,255,0.8);text-align:center;line-height:1.5;">🎰</div>
-        </div>
-      </div>
-      <button id="jackpot-btn" onclick="spinJackpot()" style="width:100%;padding:15px;background:#FFE020;border:none;border-radius:12px;font-size:16px;font-weight:700;color:#111;cursor:pointer;margin-bottom:1rem;">🎰 Βρες την φάση σου →</button>
-      <div id="jackpot-result" style="display:none;">
-        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
-          <button onclick="voteJackpot()" id="jp-vote-btn" style="padding:10px 20px;background:#FFE020;border:none;border-radius:22px;font-size:12px;font-weight:700;color:#111;cursor:pointer;">Ψηφίζω →</button>
-          <button onclick="spinJackpot()" style="padding:10px 20px;background:transparent;border:1px solid rgba(255,255,255,0.3);border-radius:22px;font-size:12px;color:#fff;cursor:pointer;">🎰 Ξανά</button>
-          <button onclick="shareJackpot()" style="padding:10px 20px;background:transparent;border:1px solid rgba(255,255,255,0.3);border-radius:22px;font-size:12px;color:#fff;cursor:pointer;">Share</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer">
-      <div class="footer-badge">hoper</div>
-      <div class="footer-text">flyhoper.com · Don't go. Fly Hoper.</div>
-    </div>
-  </div>
-</div>
-
-<audio id="jingle" loop preload="auto">
-  <source src="Πετάω από χαρά_Flyhoper.mp3" type="audio/mpeg">
-</audio>
-
-<button id="sound-btn" onclick="toggleSound()" style="position:fixed;bottom:1.5rem;right:1.5rem;width:48px;height:48px;border-radius:50%;background:#FFE020;border:none;font-size:20px;cursor:pointer;z-index:999;box-shadow:0 2px 12px rgba(0,0,0,0.2)">🔇</button>
-
-<script>
-const islands = [
-  { name:"Anafi", nameGr:"Ανάφη", votes:4821, img:"https://images.unsplash.com/photo-1533105079780-92b9be482077?w=80&h=80&fit=crop" },
-  { name:"Antiparos", nameGr:"Αντίπαρος", votes:1102, img:"https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=80&h=80&fit=crop" },
-  { name:"Athens", nameGr:"Αθήνα", votes:987, img:"https://images.unsplash.com/photo-1555993539-1732b0258235?w=80&h=80&fit=crop" },
-  { name:"Folegandros", nameGr:"Φολέγανδρος", votes:1543, img:"https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=80&h=80&fit=crop" },
-  { name:"Ios", nameGr:"Ίος", votes:2210, img:"https://images.unsplash.com/photo-1504512485720-7d83a16ee930?w=80&h=80&fit=crop" },
-  { name:"Kea", nameGr:"Κέα", votes:876, img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=80&h=80&fit=crop" },
-  { name:"Koufonisia", nameGr:"Κουφονήσια", votes:1876, img:"https://images.unsplash.com/photo-1580541832626-2a7131ee809f?w=80&h=80&fit=crop" },
-  { name:"Milos", nameGr:"Μήλος", votes:3102, img:"https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=80&h=80&fit=crop" },
-  { name:"Mykonos", nameGr:"Μύκονος", votes:4103, img:"https://images.unsplash.com/photo-1601581875039-e899893d520c?w=80&h=80&fit=crop" },
-  { name:"Naxos", nameGr:"Νάξος", votes:2654, img:"https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=80&h=80&fit=crop" },
-  { name:"Patmos", nameGr:"Πάτμος", votes:2917, img:"https://images.unsplash.com/photo-1555993539-1732b0258235?w=80&h=80&fit=crop" },
-  { name:"Porto Heli", nameGr:"Πόρτο Χέλι", votes:654, img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=80&h=80&fit=crop" },
-  { name:"Samos", nameGr:"Σάμος", votes:1421, img:"https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=80&h=80&fit=crop" },
-  { name:"Santorini", nameGr:"Σαντορίνη", votes:3654, img:"https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=80&h=80&fit=crop" },
-  { name:"Sifnos", nameGr:"Σίφνος", votes:1987, img:"https://images.unsplash.com/photo-1504512485720-7d83a16ee930?w=80&h=80&fit=crop" },
-  { name:"Syros", nameGr:"Σύρος", votes:1842, img:"https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=80&h=80&fit=crop" },
-  { name:"Tinos", nameGr:"Τήνος", votes:1654, img:"https://images.unsplash.com/photo-1533105079780-92b9be482077?w=80&h=80&fit=crop" },
-];
-
-let lang = 'gr';
-let selected = islands[0];
-let currentSlide = 0;
-const totalSlides = 5;
-let autoplayTimer;
-const audio = document.getElementById('jingle');
-const soundBtn = document.getElementById('sound-btn');
-let playing = false;
-
-function startSound() {
-  if (!playing) {
-    audio.volume = 0.4;
-    audio.play().catch(()=>{});
-    soundBtn.textContent = '🔊';
-    playing = true;
-    const banner = document.getElementById('sound-banner');
-    if (banner) banner.style.display = 'none';
-  }
-}
-
-function toggleSound() {
-  if (playing) {
-    audio.pause();
-    soundBtn.textContent = '🔇';
-    playing = false;
-  } else {
-    audio.play().catch(()=>{});
-    soundBtn.textContent = '🔊';
-    playing = true;
-  }
-}
-
-function buildDots() {
-  const d = document.getElementById('carousel-dots');
-  d.innerHTML = '';
-  for(let i=0;i<totalSlides;i++){
-    const dot = document.createElement('button');
-    dot.className = 'dot' + (i===0?' active':'');
-    dot.onclick = () => goToSlide(i);
-    d.appendChild(dot);
-  }
-}
-
-function goToSlide(n) {
-  currentSlide = n;
-  document.getElementById('carousel-track').style.transform = `translateX(-${n*20}%)`;
-  document.querySelectorAll('.dot').forEach((d,i) => d.className = 'dot'+(i===n?' active':''));
-}
-
-function moveCarousel(dir) {
-  clearInterval(autoplayTimer);
-  goToSlide((currentSlide + dir + totalSlides) % totalSlides);
-  startAutoplay();
-}
-
-function startAutoplay() {
-  autoplayTimer = setInterval(() => goToSlide((currentSlide+1)%totalSlides), 4000);
-}
-
-function buildIslands() {
-  const grid = document.getElementById('islands-grid');
-  grid.innerHTML = '';
-  islands.forEach(isl => {
-    const pill = document.createElement('div');
-    pill.className = 'island-pill' + (isl===selected?' selected':'');
-    pill.innerHTML = `<div class="island-thumb"><img src="${isl.img}" alt="${isl.name}" onerror="this.parentElement.style.background='#E2E8F0'"/></div><span class="island-pname">${lang==='gr'?isl.nameGr:isl.name}</span><div class="island-check">✓</div>`;
-    pill.onclick = () => { selected=isl; buildIslands(); updateCopy(); };
-    grid.appendChild(pill);
-  });
-}
-
-function buildLeaderboard() {
-  const sorted = [...islands].sort((a,b)=>b.votes-a.votes).slice(0,6);
-  const max = sorted[0].votes;
-  document.getElementById('lb-rows').innerHTML = sorted.map((isl,i) => `
-    <div class="lb-row">
-      <div class="lb-num ${i===0?'gold':''}">${i+1}</div>
-      <div class="lb-limg"><img src="${isl.img}" alt="${isl.name}" onerror="this.parentElement.style.background='#E2E8F0'"/></div>
-      <div class="lb-name">${lang==='gr'?isl.nameGr:isl.name}</div>
-      <div class="lb-bar-wrap"><div class="lb-bar" style="width:${Math.round(isl.votes/max*100)}%"></div></div>
-      <div class="lb-count">${isl.votes.toLocaleString()}</div>
-    </div>`).join('');
-}
-
-function updateCopy() {
-  const name = lang==='gr' ? selected.nameGr : selected.name;
-  document.getElementById('vote-btn').textContent = (lang==='gr'?'Ψηφίζω ':'Vote for ') + name + ' →';
-  document.getElementById('sh-line').textContent = lang==='gr' ? `Φέτος η φάση μου είναι ${name}.` : `This summer's situationship is ${name}.`;
-  document.getElementById('sh-tag').textContent = `#FasiEinai${selected.name.replace(/\s/g,'')} · flyhoper.com`;
-}
-
-function setLang(l, btn) {
-  lang = l;
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  const gr = l==='gr';
-  document.getElementById('s1').textContent = gr?'Επίλεξε νησί':'Choose island';
-  document.getElementById('s2').textContent = 'Follow @flyhoper';
-  document.getElementById('s3').textContent = gr?'Tag έναν φίλο':'Tag a friend';
-  document.getElementById('s4').textContent = gr?'Share & κέρδισε':'Share & win';
-  document.getElementById('islands-label').textContent = gr?'ΕΠΙΛΕΞΕ ΤΟ ΝΗΣΙ ΣΟΥ':'CHOOSE YOUR ISLAND';
-  document.getElementById('form-title').textContent = gr?'Μπες στην κλήρωση':'Enter the giveaway';
-  document.getElementById('form-sub').textContent = gr?'Συμπλήρωσε τα στοιχεία σου και ψήφισε.':'Fill in your details and vote.';
-  document.getElementById('form-note').textContent = gr?'Ισχύουν όροι και προϋποθέσεις · flyhoper.com':'Terms & conditions apply · flyhoper.com';
-  document.getElementById('lb-title').textContent = gr?'Leaderboard':'Live leaderboard';
-  document.getElementById('p1t').textContent = gr?'ταξίδι για 2':'trip for 2';
-  document.getElementById('p1s').textContent = gr?'Hoper flight στο νικητήριο νησί':'Hoper flight to the winning island';
-  document.getElementById('p2t').textContent = gr?'ζευγάρια Ray-Ban':'Ray-Ban pairs';
-  document.getElementById('p2s').textContent = gr?'Αξία €200 το ζεύγος':'€200 value each';
-  document.getElementById('sh-title').textContent = gr?'Μοιράσου το':'Share it';
-  document.getElementById('sh-sub').textContent = gr?'Κάθε share = +1 εγγραφή στην κλήρωση':'Every share = +1 entry';
-  document.getElementById('email-in').placeholder = gr?'email σου':'your email';
-  document.getElementById('friend-in').placeholder = gr?'email φίλου (optional +1)':"friend's email (optional +1)";
-  setLangJackpot(gr);
-  buildIslands();
-  buildLeaderboard();
-  updateCopy();
-}
-
-const jpIslands = [
-  { name:"Ανάφη", tag:"#FasiEinaiAnafi" },
-  { name:"Ίος", tag:"#FasiEinaiIos" },
-  { name:"Μύκονος", tag:"#FasiEinaiMykonos" },
-  { name:"Μήλος", tag:"#FasiEinaiMilos" },
-  { name:"Φολέγανδρος", tag:"#FasiEinaiFolegandros" },
-  { name:"Κουφονήσια", tag:"#FasiEinaiKoufonisia" },
-  { name:"Σίφνος", tag:"#FasiEinaiSifnos" },
-  { name:"Πάτμος", tag:"#FasiEinaiPatmos" },
-  { name:"Τήνος", tag:"#FasiEinaiTinos" },
-  { name:"Σέριφος", tag:"#FasiEinaiSerifos" },
-  { name:"Σύρος", tag:"#FasiEinaiSyros" },
-  { name:"Σάμος", tag:"#FasiEinaiSamos" },
-];
-
-const jpAtakes = [
-  "Δεν πήγες με πλάνο. Έμεινες με τον Πάνο.",
-  "Είπες «τελευταίο ποτό». Ήρθε η Μαρία.",
-  "Δεν ήταν τίποτα. Ρώτα τον Στέλιο.",
-  "Πήγες για χαλαρά. Βρήκες τον Νίκο.",
-  "Δεν το θυμάσαι καλά. Η Ελένη θυμάται.",
-  "Ήρθες για 3 μέρες. Έφυγες μετά από 10.",
-  "Δεν υπάρχει σήμα. Δεν σε νοιάζει.",
-  "Έχασες το πλοίο. Επίτηδες.",
-  "€40 το mojito. Το παράγγειλες δύο φορές.",
-  "Βρήκες την καλύτερη παραλία της ζωής σου. Δεν λες πού.",
-  "Ήρθες μόνος. Δεν ένιωσες μόνος.",
-  "Δεν ήξερες κανέναν. Τώρα ξέρεις όλους.",
-  "Ήρθες skeptic. Έφυγες believer. Δεν εξηγείς.",
-  "Το μυστικό που δεν θες να πεις σε κανέναν.",
-  "Ήρθες για φαγητό. Έμεινες για κάτι άλλο.",
-  "Δεν είχες πλάνο. Έγινε το καλύτερο καλοκαίρι σου.",
-  "Χωράνε 40 άτομα. Τα ξέρεις όλα μέχρι το βράδυ.",
-  "Δεν ήταν τίποτα. Ήταν τα πάντα.",
-  "Sarakiniko. Τέλος.",
-  "Δεν το περίμενες. Κανείς δεν το περιμένει.",
-  "Ήρθες με διατροφή. Έφυγες χωρίς.",
-  "Λίγο κρασί, λίγο θάλασσα, και τον Μήτσο από τις Μάντρες.",
-  "Δεν υπάρχει ATM. Ούτε χρειάστηκε.",
-  "Πήγες για ένα βράδυ. Έφυγες Τρίτη.",
-  "Ξέρεις γιατί πας. Δεν το παραδέχεσαι.",
-];
-
-let currentJpIsland = null;
-let currentJpAtaka = null;
-let isSpinning = false;
-
-function spinJackpot() {
-  if (isSpinning) return;
-  isSpinning = true;
-  const btn = document.getElementById('jackpot-btn');
-  const result = document.getElementById('jackpot-result');
-  const islandEl = document.getElementById('jp-island-display');
-  const atakaEl = document.getElementById('jp-ataka-display');
-  result.style.display = 'none';
-  btn.textContent = '🎰 ...';
-  let count = 0;
-  const interval = setInterval(() => {
-    islandEl.textContent = jpIslands[Math.floor(Math.random()*jpIslands.length)].name;
-    atakaEl.textContent = jpAtakes[Math.floor(Math.random()*jpAtakes.length)];
-    count++;
-    if (count > 18) {
-      clearInterval(interval);
-      currentJpIsland = jpIslands[Math.floor(Math.random()*jpIslands.length)];
-      currentJpAtaka = jpAtakes[Math.floor(Math.random()*jpAtakes.length)];
-      islandEl.textContent = currentJpIsland.name;
-      atakaEl.textContent = currentJpAtaka;
-      result.style.display = 'block';
-      btn.textContent = '🎰 Βρες την φάση σου →';
-      isSpinning = false;
-      document.getElementById('jp-vote-btn').textContent = `Ψηφίζω ${currentJpIsland.name} →`;
+    function startSound() {
+      if (!playing) {
+        audio.volume = 0.4;
+        audio.play().catch(() => {});
+        soundBtn.textContent = '🔊';
+        playing = true;
+        const banner = document.getElementById('sound-banner');
+        if (banner) banner.style.display = 'none';
+      }
     }
-  }, 80);
-}
 
-function voteJackpot() {
-  if (!currentJpIsland) return;
-  const isl = islands.find(i => i.nameGr === currentJpIsland.name);
-  if (isl) { selected = isl; buildIslands(); updateCopy(); }
-  document.querySelector('.form-card').scrollIntoView({behavior:'smooth'});
-}
+    function toggleSound() {
+      if (playing) {
+        audio.pause();
+        soundBtn.textContent = '🔇';
+        playing = false;
+      } else {
+        audio.play().catch(() => {});
+        soundBtn.textContent = '🔊';
+        playing = true;
+      }
+    }
 
-function shareJackpot() {
-  if (!currentJpIsland) return;
-  const text = `[ f-AH-si ] είναι ${currentJpIsland.name}. ${currentJpAtaka} ${currentJpIsland.tag} · ifasieinaihop.com`;
-  if (navigator.share) { navigator.share({text}); }
-  else { navigator.clipboard.writeText(text).then(()=>alert('Copied! 🎰')); }
-}
+    function buildDots() {
+      const d = document.getElementById('carousel-dots');
+      d.innerHTML = '';
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => goToSlide(i);
+        d.appendChild(dot);
+      }
+    }
 
-function setLangJackpot(gr) {
-  document.getElementById('jp-sub').textContent = gr ? 'Δεν ξέρεις την φάση σου;' : "Don't know your fasi?";
-  document.getElementById('jp-title').textContent = gr ? 'Η φάση μου είναι...' : 'My fasi is...';
-  document.getElementById('jackpot-btn').textContent = gr ? '🎰 Βρες την φάση σου →' : '🎰 Find your fasi →';
-}
+    function goToSlide(n) {
+      currentSlide = n;
+      document.getElementById('carousel-track').style.transform = `translateX(-${n * 20}%)`;
+      document.querySelectorAll('.dot').forEach((d, i) => {
+        d.className = 'dot' + (i === n ? ' active' : '');
+      });
+    }
 
-buildDots();
-startAutoplay();
-buildIslands();
-buildLeaderboard();
-updateCopy();
-</script>
+    function moveCarousel(dir) {
+      clearInterval(autoplayTimer);
+      goToSlide((currentSlide + dir + totalSlides) % totalSlides);
+      startAutoplay();
+    }
+
+    function startAutoplay() {
+      autoplayTimer = setInterval(() => {
+        goToSlide((currentSlide + 1) % totalSlides);
+      }, 4000);
+    }
+
+    function spinJackpot() {
+      if (isSpinning) return;
+
+      isSpinning = true;
+
+      const btn = document.getElementById('jackpot-btn');
+      const result = document.getElementById('jackpot-result');
+      const islandEl = document.getElementById('jp-island-display');
+      const atakaEl = document.getElementById('jp-ataka-display');
+
+      result.classList.remove('show');
+      btn.textContent = lang === 'gr' ? '🎰 Γυρίζει...' : '🎰 Spinning...';
+
+      let count = 0;
+
+      const interval = setInterval(() => {
+        islandEl.textContent = jpIslands[Math.floor(Math.random() * jpIslands.length)].name;
+        atakaEl.textContent = jpAtakes[Math.floor(Math.random() * jpAtakes.length)];
+        count++;
+
+        if (count > 20) {
+          clearInterval(interval);
+
+          currentJpIsland = jpIslands[Math.floor(Math.random() * jpIslands.length)];
+          currentJpAtaka = jpAtakes[Math.floor(Math.random() * jpAtakes.length)];
+
+          islandEl.textContent = currentJpIsland.name;
+          atakaEl.textContent = currentJpAtaka;
+
+          document.getElementById('jp-vote-btn').textContent = lang === 'gr' ? 'Το βρήκα →' : 'This is me →';
+
+          document.getElementById('sh-line').textContent =
+            lang === 'gr'
+              ? `Η φάση μου είναι ${currentJpIsland.name}. ${currentJpAtaka}`
+              : `My fasi is ${currentJpIsland.name}. ${currentJpAtaka}`;
+
+          document.getElementById('sh-tag').textContent = `${currentJpIsland.tag} · ifasieinaihop.com`;
+
+          result.classList.add('show');
+          btn.textContent = lang === 'gr' ? '🎰 Βρες τη φάση σου →' : '🎰 Find your fasi →';
+          isSpinning = false;
+        }
+      }, 80);
+    }
+
+    function voteJackpot() {
+      document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function shareJackpot() {
+      if (!currentJpIsland || !currentJpAtaka) return;
+
+      const text =
+        lang === 'gr'
+          ? `[ f-AH-si ] Η φάση μου είναι ${currentJpIsland.name}. ${currentJpAtaka} ${currentJpIsland.tag} · ifasieinaihop.com`
+          : `[ f-AH-si ] My fasi is ${currentJpIsland.name}. ${currentJpAtaka} ${currentJpIsland.tag} · ifasieinaihop.com`;
+
+      if (navigator.share) {
+        navigator.share({ text });
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert(lang === 'gr' ? 'Έτοιμο για paste ✨' : 'Copied ✨');
+        });
+      } else {
+        alert(text);
+      }
+    }
+
+    function setLang(l, btn) {
+      lang = l;
+
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const gr = l === 'gr';
+
+      document.getElementById('form-title').textContent = gr ? 'Μπες στην κλήρωση' : 'Enter the giveaway';
+      document.getElementById('form-sub').textContent = gr
+        ? 'Κάνε spin, follow και βάλε το email σου για να μπεις στην κλήρωση.'
+        : 'Spin, follow and enter your email to join the giveaway.';
+      document.getElementById('form-note').textContent = gr
+        ? 'Ισχύουν όροι και προϋποθέσεις · flyhoper.com'
+        : 'Terms & conditions apply · flyhoper.com';
+
+      document.getElementById('vote-btn').textContent = gr ? 'Κατοχύρωση συμμετοχής →' : 'Confirm entry →';
+
+      document.getElementById('sh-title').textContent = gr ? 'Μοιράσου το' : 'Share it';
+      document.getElementById('sh-sub').textContent = gr ? 'Βρες τη φάση σου και κάν’ το share.' : 'Find your fasi and share it.';
+      document.getElementById('email-in').placeholder = gr ? 'email σου' : 'your email';
+
+      document.getElementById('jp-sub').textContent = gr ? 'Δεν ξέρεις τη φάση σου;' : "Don't know your fasi?";
+      document.getElementById('jp-title').textContent = gr ? 'Η φάση μου είναι...' : 'My fasi is...';
+      document.getElementById('jackpot-btn').textContent = gr ? '🎰 Βρες τη φάση σου →' : '🎰 Find your fasi →';
+
+      if (!currentJpIsland) {
+        document.getElementById('sh-line').textContent = gr ? 'Η φάση μου είναι...' : 'My fasi is...';
+        document.getElementById('sh-tag').textContent = '#FasiEinai · ifasieinaihop.com';
+      } else {
+        document.getElementById('sh-line').textContent =
+          gr
+            ? `Η φάση μου είναι ${currentJpIsland.name}. ${currentJpAtaka}`
+            : `My fasi is ${currentJpIsland.name}. ${currentJpAtaka}`;
+        document.getElementById('sh-tag').textContent = `${currentJpIsland.tag} · ifasieinaihop.com`;
+      }
+    }
+
+    buildDots();
+    startAutoplay();
+    setLang('gr', document.querySelector('.lang-btn.active'));
+  </script>
 </body>
 </html>
-<!-- FASI JACKPOT SECTION - inject before </div></div> closing tags -->
